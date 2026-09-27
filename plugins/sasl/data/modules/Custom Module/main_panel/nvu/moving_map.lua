@@ -655,7 +655,7 @@ function drawMapTitle(y_offset)
             { 0, 0, 0, 1 })
     end
     if nvu_navplan.LongDesc and nvu_navplan.LongDesc ~= "" then
-        sasl.gl.drawText(avia_font, 50 * GLOBAL_SCALE2, 430 * GLOBAL_SCALE, nvu_navplan.LongDesc, 32 * GLOBAL_SCALE,
+        sasl.gl.drawText(avia_font, 50 * GLOBAL_SCALE, 430 * GLOBAL_SCALE, nvu_navplan.LongDesc, 32 * GLOBAL_SCALE,
             false, false, TEXT_ALIGN_LEFT,
             { 0, 0, 0, 1 })
     end

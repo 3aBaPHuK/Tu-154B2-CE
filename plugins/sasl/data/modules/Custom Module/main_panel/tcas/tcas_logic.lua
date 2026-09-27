@@ -772,7 +772,7 @@ if MASTER then
 	
 	-- results
 	set(mode_set, tcas_mode) -- режим TCAS. -1 = test, 0 - stby, 1 = alt off, 2 = alt on, 3 = TA, 4 = TARA	4
-	if get(kontur90~=0) then
+	if get(kontur90)~=0 then
 		if get(tra_transponder)>0 then
 			if tcas_mode==-1 then
 				set(xpdr_mode,4)

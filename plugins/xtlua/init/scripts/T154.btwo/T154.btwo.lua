@@ -38,13 +38,7 @@ simDR_sd75_1 = find_dataref("tu154b2/custom/switchers/ovhd/sd75_1_on")
 simDR_sd75_2 = find_dataref("tu154b2/custom/switchers/ovhd/sd75_2_on") 
 simDR_nav1_rotary = find_dataref("tu154b2/custom/rotary/ovhd/nav_1_right")
 simDR_nav_has_dme = find_dataref("sim/cockpit2/radios/indicators/nav_has_dme")
---simDR_steerfront = find_dataref("sim/flightmodel2/gear/tire_steer_command_deg")
-simDR_flapratio = find_dataref("sim/cockpit2/controls/flap_ratio")
-
--- simDR_gps_time_sec = find_dataref("sim/cockpit/radios/gps_dme_time_secs")
--- simDR_kln = find_dataref("tu154b2/custom/switchers/ovhd/kln_on")
--- simDR_kln_pwr = find_dataref("tu154b2/custom/switchers/kln_power_knob")
--- simDR_wpt_lit = find_dataref("tu154b2/custom/lights/wpt_lamp")
+master = find_dataref("scp/api/ismaster")
 
 simDR_hsi_sel = find_dataref("sim/cockpit/switches/HSI_selector")
 
@@ -1740,16 +1734,18 @@ function sd67()
     
     if sd67_1_dme_reserv < 1 and sd67_1_run < 1 then
         simDR_navpower[4] = 1
-        if sd67_1_test > 0 then
-            sd67_1_dist_km = 206.7/(1.852-0.852*simDR_sd_mode)
-            sd67_1_blank = 0
-        else
-            if simDR_nav_has_dme[4] > 0 then
-                sd67_1_dist_km = simDR_nav_dist[4] * (1+0.852*simDR_sd_mode)
-                sd67_1_blank = 0
-            elseif sd67_2_test < 1 then
-                sd67_1_blank = 1
-            end
+		if master ~= 1 then
+			if sd67_1_test > 0 then
+				sd67_1_dist_km = 206.7/(1.852-0.852*simDR_sd_mode)
+				sd67_1_blank = 0
+			else
+				if simDR_nav_has_dme[4] > 0 then
+					sd67_1_dist_km = simDR_nav_dist[4] * (1+0.852*simDR_sd_mode)
+					sd67_1_blank = 0
+				elseif sd67_2_test < 1 then
+					sd67_1_blank = 1
+				end
+			end
         end
     else
         sd67_1_blank = 1
@@ -1758,18 +1754,19 @@ function sd67()
     
     if sd67_2_dme_reserv < 1 and sd67_2_run < 1 then
         simDR_navpower[5] = 1
-        if sd67_2_test > 0 then
-            sd67_2_dist_km = 206.7/(1.852-0.852*simDR_sd_mode)
-            sd67_2_blank = 0
-        else
-            if simDR_nav_has_dme[5] > 0 then
-                sd67_2_dist_km = simDR_nav_dist[5] * (1+0.852*simDR_sd_mode)
-                sd67_2_blank = 0
-            elseif sd67_2_test < 1 then
-                sd67_2_blank = 1
-            end
-        end
-        
+		if master ~= 1 then
+			if sd67_2_test > 0 then
+				sd67_2_dist_km = 206.7/(1.852-0.852*simDR_sd_mode)
+				sd67_2_blank = 0
+			else
+				if simDR_nav_has_dme[5] > 0 then
+					sd67_2_dist_km = simDR_nav_dist[5] * (1+0.852*simDR_sd_mode)
+					sd67_2_blank = 0
+				elseif sd67_2_test < 1 then
+					sd67_2_blank = 1
+				end
+			end
+		end
     else
         sd67_2_blank = 1
         simDR_navpower[5] = 0
@@ -1830,15 +1827,16 @@ function sd67()
     simDR_nav_dme_khz = simDR_nav_khz
 
 
-    
-    sd67_1_dig1_loc = math.floor(sd67_1_dist_km*0.01)
-    sd67_1_dig2_loc = math.floor(sd67_1_dist_km*0.1)-sd67_1_dig1_loc*10
-    sd67_1_dig3_loc = math.floor(sd67_1_dist_km)-sd67_1_dig2_loc*10-sd67_1_dig1_loc*100
-    sd67_1_dig4_loc = math.floor(sd67_1_dist_km*10)-sd67_1_dig1_loc*1000-sd67_1_dig2_loc*100-sd67_1_dig3_loc*10
-    sd67_2_dig1_loc = math.floor(sd67_2_dist_km*0.01)
-    sd67_2_dig2_loc = math.floor(sd67_2_dist_km*0.1)-sd67_2_dig1_loc*10
-    sd67_2_dig3_loc = math.floor(sd67_2_dist_km)-sd67_2_dig2_loc*10-sd67_2_dig1_loc*100
-    sd67_2_dig4_loc = math.floor(sd67_2_dist_km*10)-sd67_2_dig1_loc*1000-sd67_2_dig2_loc*100-sd67_2_dig3_loc*10
+	if master ~= 1 then
+		sd67_1_dig1_loc = math.floor(sd67_1_dist_km*0.01)
+		sd67_1_dig2_loc = math.floor(sd67_1_dist_km*0.1)-sd67_1_dig1_loc*10
+		sd67_1_dig3_loc = math.floor(sd67_1_dist_km)-sd67_1_dig2_loc*10-sd67_1_dig1_loc*100
+		sd67_1_dig4_loc = math.floor(sd67_1_dist_km*10)-sd67_1_dig1_loc*1000-sd67_1_dig2_loc*100-sd67_1_dig3_loc*10
+		sd67_2_dig1_loc = math.floor(sd67_2_dist_km*0.01)
+		sd67_2_dig2_loc = math.floor(sd67_2_dist_km*0.1)-sd67_2_dig1_loc*10
+		sd67_2_dig3_loc = math.floor(sd67_2_dist_km)-sd67_2_dig2_loc*10-sd67_2_dig1_loc*100
+		sd67_2_dig4_loc = math.floor(sd67_2_dist_km*10)-sd67_2_dig1_loc*1000-sd67_2_dig2_loc*100-sd67_2_dig3_loc*10
+	end
  
 --sd67_1
 if (sd67_1_dig1_loc-sd67_1_dig1_loc1) > 0 then
@@ -2096,7 +2094,9 @@ function after_physics()
     bleed()
     --starter()
     fire_system()
-    sd67()
+	if master ~= 1 then
+		sd67()
+	end
     elec()
     --kursmp()
     stp_test()

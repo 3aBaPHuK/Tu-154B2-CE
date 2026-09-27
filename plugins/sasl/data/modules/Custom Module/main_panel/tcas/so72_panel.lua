@@ -40,7 +40,7 @@ defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have 
 bus115_1_volt = globalPropertyf("tu154b2/custom/elec/bus115_1_volt")
 so_fail = globalPropertyi("tu154b2/custom/failures/so72_fail")
 so_mode = globalPropertyi("tu154b2/custom/tcas/co72_mode")
-
+panel_80s = globalPropertyi("sim/custom/b2/kontur_90th")
 
 
 
@@ -102,119 +102,119 @@ local code_was_set =0
 
 
 function update()
-	
-	local passed = get(frame_time)
-	
-	--sounds()
-	
-	local mode = get(transponder_mode)
-	local fail=get(so_fail)
-	power = mode > 0 and get(bus27_volt_left) > 13 and get(tcas_pow) == 0 and get(bus115_1_volt)>100
-	local xpdr_mode=0
-	if power and mode==5 and fail==0 then
-		xpdr_mode=2
-	elseif power and mode==6 and fail==0 then
-		xpdr_mode=3
-	elseif power then
-		xpdr_mode=1
-	end
-	local d1, d2, d3, d4 = getDigits(code)
-	
-	-- show code
-	code_show = d1..d2..d3..d4
-    code_pwr = power and mode > 4
-    
-    --if code_pwr then
-		if  get(ismaster) ~= 1 then
-			set(xpdr_code,code)
+	if get(panel_80s) == 1 then
+		local passed = get(frame_time)
+		
+		--sounds()
+		
+		local mode = get(transponder_mode)
+		local fail=get(so_fail)
+		power = mode > 0 and get(bus27_volt_left) > 13 and get(tcas_pow) == 0 and get(bus115_1_volt)>100
+		local xpdr_mode=0
+		if power and mode==5 and fail==0 then
+			xpdr_mode=3
+		elseif power and mode==6 and fail==0 then
+			xpdr_mode=2
+		elseif power then
+			xpdr_mode=1
 		end
-    --else
-        code = get(so72_code)
-    --end
-	
-	-- change code
-	local butt_1 = get(transponder_but_1)
-	local butt_2 = get(transponder_but_2)
-	local butt_3 = get(transponder_but_3)
-	local butt_4 = get(transponder_but_4)
-	
-	local buttons_summ = butt_1 + butt_2 + butt_3 + butt_4
-	
-	if power and code_pwr and buttons_summ > 0 and buttons_summ ~= buttons_summ_last then -- if working and any button just pressed
+		local d1, d2, d3, d4 = getDigits(code)
 		
+		-- show code
+		code_show = d1..d2..d3..d4
+		code_pwr = power and mode > 4
 		
-		if butt_1 == 1 then
-			d1 = d1 + 1
-			if d1 > 7 then d1 = 0 end
+		--if code_pwr then
+			if  get(ismaster) ~= 1 then
+				set(xpdr_code,code)
+			end
+		--else
+			code = get(so72_code)
+		--end
+		
+		-- change code
+		local butt_1 = get(transponder_but_1)
+		local butt_2 = get(transponder_but_2)
+		local butt_3 = get(transponder_but_3)
+		local butt_4 = get(transponder_but_4)
+		
+		local buttons_summ = butt_1 + butt_2 + butt_3 + butt_4
+		
+		if power and code_pwr and buttons_summ > 0 and buttons_summ ~= buttons_summ_last then -- if working and any button just pressed
+			
+			
+			if butt_1 == 1 then
+				d1 = d1 + 1
+				if d1 > 7 then d1 = 0 end
+			end
+			
+			if butt_2 == 1 then
+				d2 = d2 + 1
+				if d2 > 7 then d2 = 0 end
+			end
+			
+			if butt_3 == 1 then
+				d3 = d3 + 1
+				if d3 > 7 then d3 = 0 end
+			end
+			
+			if butt_4 == 1 then
+				d4 = d4 + 1
+				if d4 > 7 then d4 = 0 end
+			end
+			
+			if get(ismaster) ~= 1 then code = d1 * 1000 + d2 * 100 + d3 * 10 + d4 end
 		end
-		
-		if butt_2 == 1 then
-			d2 = d2 + 1
-			if d2 > 7 then d2 = 0 end
-		end
-		
-		if butt_3 == 1 then
-			d3 = d3 + 1
-			if d3 > 7 then d3 = 0 end
-		end
-		
-		if butt_4 == 1 then
-			d4 = d4 + 1
-			if d4 > 7 then d4 = 0 end
-		end
-		
-		if get(ismaster) ~= 1 then code = d1 * 1000 + d2 * 100 + d3 * 10 + d4 end
-	end
 
-	buttons_summ_last = buttons_summ
-	
-	-- set emergency code
-	-- if power and (mode-4) > 1 and get(transponder_emerg) == 1 then
-		-- set(xpdr_code, 7700)
-	-- end
-	
-	-- send IDENT signal
-	if power and mode > 1 and get(transponder_sign) == 1 then
-		commandOnce(ident_cmd)
-	end
-	
-	-- lamps. need to add logic with fails
-	if power and mode > 0 and get(transponder_control) == 1 then
-		self_test = true
-		self_test_cnt = 0
-	end
-	
-	if self_test and power and mode > 0 then
-		self_test_cnt = self_test_cnt + passed
-		if self_test_cnt > 0 and self_test_cnt < 30 then
-			set(transponder_red, 1)
-			set(transponder_green, 0)
-			xpdr_mode=1
-		elseif self_test_cnt >= 30 and self_test_cnt < 55 and  fail==0 then
-			set(transponder_red, 0)
-			set(transponder_green, 1)
-			xpdr_mode=1
-		else
+		buttons_summ_last = buttons_summ
+		
+		-- set emergency code
+		-- if power and (mode-4) > 1 and get(transponder_emerg) == 1 then
+			-- set(xpdr_code, 7700)
+		-- end
+		
+		-- send IDENT signal
+		if power and mode > 1 and get(transponder_sign) == 1 then
+			commandOnce(ident_cmd)
+		end
+		
+		-- lamps. need to add logic with fails
+		if power and mode > 0 and get(transponder_control) == 1 then
+			self_test = true
 			self_test_cnt = 0
+		end
+		
+		if self_test and power and mode > 0 then
+			self_test_cnt = self_test_cnt + passed
+			if self_test_cnt > 0 and self_test_cnt < 30 then
+				set(transponder_red, 1)
+				set(transponder_green, 0)
+				xpdr_mode=1
+			elseif self_test_cnt >= 30 and self_test_cnt < 55 and  fail==0 then
+				set(transponder_red, 0)
+				set(transponder_green, 1)
+				xpdr_mode=1
+			else
+				self_test_cnt = 0
+				self_test = false
+				set(transponder_red, 0)
+				set(transponder_green, 0)
+			end
+			
+		end
+		
+		if not power then
 			self_test = false
+			self_test_cnt = 0
 			set(transponder_red, 0)
 			set(transponder_green, 0)
 		end
 		
+		if get(ismaster) ~= 1 then
+			set(so_mode,xpdr_mode)
+			set(so72_code,code) 
+		end
 	end
-    
-    if not power then
-        self_test = false
-		self_test_cnt = 0
-		set(transponder_red, 0)
-		set(transponder_green, 0)
-    end
-	
-	if get(ismaster) ~= 1 then
-		set(so_mode,xpdr_mode)
-		set(so72_code,code) 
-	end
-	
 
 end
 

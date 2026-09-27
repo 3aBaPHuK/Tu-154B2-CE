@@ -35,9 +35,9 @@ defineProperty("bak_qty_2", globalPropertyf("tu154b2/custom/hydro/gs_bak_qty_2")
 defineProperty("bak_qty_3", globalPropertyf("tu154b2/custom/hydro/gs_bak_qty_3")) -- остаток масла в баке
 
 
-defineProperty("system_qty_1", globalPropertyf("tu154b2/custom/hydro/gs_qty_1")) -- остаток масла в системе
-defineProperty("system_qty_2", globalPropertyf("tu154b2/custom/hydro/gs_qty_2")) -- остаток масла в системе
-defineProperty("system_qty_3", globalPropertyf("tu154b2/custom/hydro/gs_qty_3")) -- остаток масла в системе
+-- defineProperty("system_qty_1", globalPropertyf("tu154b2/custom/hydro/gs_qty_1")) -- остаток масла в системе
+-- defineProperty("system_qty_2", globalPropertyf("tu154b2/custom/hydro/gs_qty_2")) -- остаток масла в системе
+-- defineProperty("system_qty_3", globalPropertyf("tu154b2/custom/hydro/gs_qty_3")) -- остаток масла в системе
 
 
 defineProperty("gs_qty_12_show", globalPropertyf("tu154b2/custom/hydro/gs_qty_12_show")) -- остаток масла в гидробаке
@@ -195,9 +195,6 @@ save_state = globalPropertyi("tu154b2/custom/save_state")
 
 
 -- set initial values
-set(system_qty_1, 103)
-set(system_qty_2, 103)
-set(system_qty_3, 45)
 
 set(gs_press_1, 0)
 set(gs_press_2, 0)
@@ -946,9 +943,6 @@ if MASTER then
 	set(bak_qty_3, hs3_qty)	
 	
 	-- whole system = barrel + pipes + accums
-	set(system_qty_1, hs1_qty + 79 + acc_1 + acc_4)
-	set(system_qty_2, hs2_qty + 79 + acc_2 )
-	set(system_qty_3, hs3_qty + 21 + acc_3)
 	-- set(db1,acc_1)
 	-- set(db2,acc_2)
 	-- set(db3,acc_3)

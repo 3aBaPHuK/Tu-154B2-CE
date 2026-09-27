@@ -6,7 +6,6 @@ static_fail_R = globalPropertyi("sim/operation/failures/rel_static2")
 g_force = globalPropertyf("sim/flightmodel/forces/g_nrml")
 frame_time = globalPropertyf("tu154b2/custom/time/frame_time")
 rv5_alt = globalPropertyf("tu154b2/custom/misc/rv5_alt_left")
-rv_flag = globalPropertyi("tu154b2/custom/gauges/alt/radioalt_flag_left")
 alpha_critical = globalPropertyi("tu154b2/custom/auasp/alpha_critical")
 gear1_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[0]")
 gear2_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[1]")
@@ -50,10 +49,7 @@ function update()
 	if get(static_fail_R) ~= 6 then
 		alt = get(press_alt)
 	end
-	local radalt_flag = get(rv_flag)
-	if radalt_flag == 0 then
-		rv_alt = get(rv5_alt)
-	end
+	rv_alt = get(rv5_alt)
 	local vert = 0
 	local rv_vert = 0
 	-- vertical speed
@@ -146,7 +142,7 @@ function update()
 	end
 	--- work lamp and alarm ---
 	if MASTER then
-		local work = bool2int(power_tmr >= 1 and fail_1 + fail_2 + fail_3 == 0 and radalt_flag == 0 and get(taws) == 0)
+		local work = bool2int(power_tmr >= 1 and fail_1 + fail_2 + fail_3 == 0 and get(taws) == 0)
 		local lamps_brt = math.max((get(bus27_volt_left)  - 10) / 18.5, 0)
 		set(rdy_lamp, work * lamps_brt)
 		local signal = bool2int(S1 >= 1 or S2 >= 1 or S3 >= 1)

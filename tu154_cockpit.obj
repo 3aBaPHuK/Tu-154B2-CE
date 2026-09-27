@@ -20075,6 +20075,7 @@ ATTR_manip_toggle up_down 1.000000 0.000000 tu154b2/custom/switchers/console/abs
 TRIS 19785 6
 ANIM_end
 ANIM_begin
+ANIM_hide 0.000000 0.000000 sim/custom/b2/kontur_90th
 ATTR_manip_toggle up_down 1.000000 0.000000 tu154b2/custom/switchers/nav_select
 TRIS 19791 6
 ANIM_end

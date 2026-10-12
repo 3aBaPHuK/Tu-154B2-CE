@@ -17496,6 +17496,7 @@ ATTR_manip_push button 1.000000 0.000000 sim/custom/vyzov_bp_button1
 TRIS 4182 6
 ANIM_end
 ANIM_begin
+ANIM_hide 0.000000 0.000000 sim/custom/b2/kontur_pa_off
 ATTR_manip_push button 1.000000 0.000000 tu154b2/custom/buttons/eng/reserv_pump_test
 TRIS 4188 6
 ANIM_end
@@ -19202,6 +19203,7 @@ ATTR_manip_toggle up_down 1.000000 0.000000 sim/custom/gauges/eng/vibro_pwr3
 TRIS 18519 6
 ANIM_end
 ANIM_begin
+ANIM_hide 0.000000 0.000000 sim/custom/b2/kontur_pa_off
 ATTR_manip_push button 1.000000 0.000000 tu154b2/custom/buttons/eng/reserv_pump_test
 TRIS 18525 6
 ANIM_end

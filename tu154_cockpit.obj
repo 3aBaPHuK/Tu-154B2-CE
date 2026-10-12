@@ -17057,28 +17057,6 @@ ANIM_end
 ANIM_end
 ANIM_begin
 ANIM_hide 0.000000 0.000000 tu154b2/custom/b2/kontur_on
-ANIM_begin
-ATTR_manip_toggle up_down 1.000000 0.000000 sim/custom/b2/elev_trimm_1_pk
-TRIS 3348 6
-ANIM_end
-ANIM_begin
-ANIM_trans 0.846102 -1.146810 -20.171900 0.846102 -1.146810 -20.171900 0.000000 0.000000 none
-ANIM_rotate 0.000000 0.000000 1.000000 0.000000 140.000000 0.000000 1.000000 sim/custom/b2/elev_trimm_2_pk_cap
-ANIM_trans -0.846102 1.146810 20.171900 -0.846102 1.146810 20.171900 0.000000 0.000000 none
-ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/b2/elev_trimm_2_pk_cap
-TRIS 3354 6
-ANIM_end
-ANIM_begin
-ANIM_trans 0.846102 -1.146810 -20.146299 0.846102 -1.146810 -20.146299 0.000000 0.000000 none
-ANIM_rotate 0.000000 0.000000 1.000000 0.000000 140.000000 0.000000 1.000000 sim/custom/b2/elev_trimm_1_pk_cap
-ANIM_trans -0.846102 1.146810 20.146299 -0.846102 1.146810 20.146299 0.000000 0.000000 none
-ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/b2/elev_trimm_1_pk_cap
-TRIS 3360 6
-ANIM_end
-ANIM_begin
-ATTR_manip_toggle up_down 1.000000 0.000000 sim/custom/b2/elev_trimm_2_pk
-TRIS 3366 6
-ANIM_end
 # ANIM_begin
 # ATTR_manip_push button 1.000000 0.000000 sim/custom/ssos_test_btn3
 # TRIS 3372 6
@@ -21213,4 +21191,27 @@ ANIM_begin
 ATTR_manip_push button 1.000000 0.000000 sim/custom/b2/sbros_stop
 TRIS 3414 6
 ANIM_end
+ANIM_end
+
+ANIM_begin
+ATTR_manip_toggle up_down 1.000000 0.000000 sim/custom/b2/elev_trimm_1_pk
+TRIS 3348 6
+ANIM_end
+ANIM_begin
+ANIM_trans 0.846102 -1.146810 -20.171900 0.846102 -1.146810 -20.171900 0.000000 0.000000 none
+ANIM_rotate 0.000000 0.000000 1.000000 0.000000 140.000000 0.000000 1.000000 sim/custom/b2/elev_trimm_2_pk_cap
+ANIM_trans -0.846102 1.146810 20.171900 -0.846102 1.146810 20.171900 0.000000 0.000000 none
+ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/b2/elev_trimm_2_pk_cap
+TRIS 3354 6
+ANIM_end
+ANIM_begin
+ANIM_trans 0.846102 -1.146810 -20.146299 0.846102 -1.146810 -20.146299 0.000000 0.000000 none
+ANIM_rotate 0.000000 0.000000 1.000000 0.000000 140.000000 0.000000 1.000000 sim/custom/b2/elev_trimm_1_pk_cap
+ANIM_trans -0.846102 1.146810 20.146299 -0.846102 1.146810 20.146299 0.000000 0.000000 none
+ATTR_manip_toggle hand 1.000000 0.000000 sim/custom/b2/elev_trimm_1_pk_cap
+TRIS 3360 6
+ANIM_end
+ANIM_begin
+ATTR_manip_toggle up_down 1.000000 0.000000 sim/custom/b2/elev_trimm_2_pk
+TRIS 3366 6
 ANIM_end

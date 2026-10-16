@@ -310,22 +310,22 @@ local function lamps()
 	local tank_level_3 = get(auto_tank_level_3)
 	
 	local fuel_tank3_left_brt = 0
-	if tank_level_3 == -1 then fuel_tank3_left_brt = 1 end
+	if tank_level_3 == -1 or tank_level_3 == 2 then fuel_tank3_left_brt = 1 end
 	fuel_tank3_left_brt = fuel_tank3_left_brt * lamps_brt
 	set(fuel_tank3_left_fail, fuel_tank3_left_brt)
 	
 	local fuel_tank2_left_brt = 0
-	if tank_level_2 == -1 then fuel_tank2_left_brt = 1 end
+	if tank_level_2 == -1 or tank_level_2 == 2 then fuel_tank2_left_brt = 1 end
 	fuel_tank2_left_brt = fuel_tank2_left_brt * lamps_brt
 	set(fuel_tank2_left_fail, fuel_tank2_left_brt)
 	
 	local fuel_tank3_right_brt = 0
-	if tank_level_3 == 1 then fuel_tank3_right_brt = 1 end
+	if tank_level_3 == 1 or tank_level_3 == 2 then fuel_tank3_right_brt = 1 end
 	fuel_tank3_right_brt = fuel_tank3_right_brt * lamps_brt
 	set(fuel_tank3_right_fail, fuel_tank3_right_brt)
 	
 	local fuel_tank2_right_brt = 0
-	if tank_level_2 == 1 then fuel_tank2_right_brt = 1 end
+	if tank_level_2 == 1 or tank_level_2 == 2 then fuel_tank2_right_brt = 1 end
 	fuel_tank2_right_brt = fuel_tank2_right_brt * lamps_brt
 	set(fuel_tank2_right_fail, fuel_tank2_right_brt)	
 	
@@ -429,7 +429,7 @@ local function lamps()
 	set(fuel_porc_reserv, fuel_porc_reserv_brt)
 	
 	--local fuel_level_automat_brt = math.max(get(fuel_level) * get(fuel_flow_mode) * get(fuel_flow_on) * lamps_brt, test_btn)
-	local fuel_level_automat_brt = get(fuel_level) * (1-get(fuel_level_fail)) * lamps_brt
+	local fuel_level_automat_brt = sys_data_tbl.fuel_level_on * lamps_brt
 	set(fuel_level_automat, fuel_level_automat_brt)
 	
 end
@@ -684,7 +684,7 @@ local v_sum = 0
 local v_sum_f = 0
 
 local function electric_meters()
-	local power = get(total_ft) < 10 or (get(fuel_meter_on) == 1 and (get(bus27_volt_left) > 13 or get(bus27_volt_right) > 13) and (get(bus115_1_volt) > 110 or get(bus115_3_volt) > 110))
+	local power = get(total_ft) < 10 or (get(fuel_meter_on) == 1 and get(bus27_volt_right) > 13 and get(bus115_3_volt) > 110)
 	
 	
 	local tank1_need = get(fuel_meter_tank1)

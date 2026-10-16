@@ -95,6 +95,7 @@ deflection_mtr_2 = globalProperty("sim/flightmodel2/gear/tire_vertical_deflectio
 -- time
 frame_time = globalPropertyf("tu154b2/custom/time/frame_time") -- flight time
 kontur = globalPropertyi("tu154b2/custom/b2/kontur_on")
+fuel_meter_on = globalPropertyi("tu154b2/custom/switchers/fuel/fuel_meter_on")
 
 
 -- fuel press after pumps
@@ -155,12 +156,16 @@ local pump1_2_work_prev = 0
 local pump1_3_work_prev = 0
 local pump1_4_work_prev = 0
 
+local tank_level_2_start = 0
+local tank_level_3_start = 0
+
 sys_data_tbl.eng_feed_p_1 = 0
 sys_data_tbl.eng_feed_p_2 = 0
 sys_data_tbl.eng_feed_p_3 = 0
 sys_data_tbl.eng_feed_p_4 = 0
 sys_data_tbl.eng_feed_res = 0
 
+sys_data_tbl.fuel_level_on = 0
 
 function update()
 	local passed = get(frame_time)
@@ -216,8 +221,9 @@ function update()
 	
 	
 	-- calculate automatic cue mode
+	local auto_fuel_power = power_27R and power115R and get(fuel_flow_on) == 1 and get(fuel_auto_fail) == 0
 	local tanks_turn = 0 -- 0 = none, 1 = 2, 2 = 2+3, 3 = 3, 4 = 4
-	if (power_27L or power_27R) and get(fuel_flow_on) == 1 and get(fuel_auto_fail) == 0 then
+	if auto_fuel_power then
 		if tank_qty_2L + tank_qty_2R > 7400 then tanks_turn = 1
 		elseif tank_qty_2L + tank_qty_2R <= 7400 and (fuel_2L or fuel_2R) and (fuel_3L or fuel_3R) then tanks_turn = 2
 		elseif fuel_3L or fuel_3R then tanks_turn = 3
@@ -225,7 +231,6 @@ function update()
 		elseif fuel_4 then tanks_turn = 4
 		end
 	end
-	
 	
 	-- manipulate pumps by automatic cue
 	if tanks_turn > 0 and get(fuel_flow_mode) == 1 then -- automatic mode
@@ -384,36 +389,62 @@ function update()
 	
 	
 	-- leveling logic. 		
-	if get(fuel_level) == 1 and get(fuel_level_fail) == 0 then
-		if tank_qty_2R - tank_qty_2L > 350 then
-			tank_level_2 = -1
-			pump2L1_work = 0
-			pump2L2_work = 0
-		elseif tank_qty_2L - tank_qty_2R > 350 then
-			tank_level_2 = 1
-			pump2R1_work = 0
-			pump2R2_work = 0			
-		else
-			tank_level_2 = 0
-		end
-		
-		if tank_qty_3R - tank_qty_3L > 300 then
-			tank_level_3 = -1
-			pump3L1_work = 0
-			pump3L2_work = 0
-			pump3L3_work = 0
-		elseif tank_qty_3L - tank_qty_3R > 300 then
-			tank_level_3 = 1
-			pump3R1_work = 0	
-			pump3R2_work = 0	
-			pump3R3_work = 0	
-		else
-			tank_level_3 = 0
-		end
+	local fuel_level_power = power_27R and power115R	
+	local fuel_level_bool = fuel_level_power and get(fuel_level) == 1 and get(fuel_meter_on) == 1 and auto_fuel_power and get(fuel_level_fail) == 0 and get(fuel_flow_mode) == 1
+	local fuel_level_exceedance = math.abs(tank_qty_2L - tank_qty_2R) > 820 or math.abs(tank_qty_3L - tank_qty_3R) > 890
 	
+	if fuel_level_bool then
+
+		if math.abs(tank_qty_2R - tank_qty_2L) < 110 then
+			tank_level_2_start = 0
+		end
+
+		if math.abs(tank_qty_3R - tank_qty_3L) < 95 then
+			tank_level_3_start = 0
+		end
+
+		if fuel_level_exceedance then
+			tank_level_2 = 2
+			tank_level_3 = 2
+
+		else
+			if tank_level_2_start == -1 or tank_qty_2R - tank_qty_2L > 345 then
+				tank_level_2 = -1
+				tank_level_2_start = -1
+				pump2L1_work = 0
+				pump2L2_work = 0
+			elseif tank_level_2_start == 1 or tank_qty_2L - tank_qty_2R > 360 then
+				tank_level_2 = 1
+				tank_level_2_start = 1
+				pump2R1_work = 0
+				pump2R2_work = 0
+			else
+				tank_level_2 = 0
+			end
+
+			if tank_level_3_start == -1 or tank_qty_3R - tank_qty_3L > 320 then
+				tank_level_3 = -1
+				tank_level_3_start = -1
+				pump3L1_work = 0
+				pump3L2_work = 0
+				pump3L3_work = 0
+			elseif tank_level_3_start == 1 or tank_qty_3L - tank_qty_3R > 300 then
+				tank_level_3 = 1
+				tank_level_3_start = 1
+				pump3R1_work = 0
+				pump3R2_work = 0
+				pump3R3_work = 0
+			else
+				tank_level_3 = 0
+			end
+		end
+
+	else
+		tank_level_2_start = 0
+		tank_level_3_start = 0
 	end
 	
-	
+	sys_data_tbl.fuel_level_on = bool2int(fuel_level_bool and not fuel_level_exceedance)
 	
 	-- pumps 1 works separately from atomatics
 	if fuel_1 then

@@ -3,8 +3,9 @@ I
 OBJ
 
 TEXTURE Cockpit_glass_out.png
-RAIN_scale 0.5
 GLOBAL_specular 1.0
+BLEND_GLASS
+RAIN_scale 0.5
 
 THERMAL_texture windshield_thermal_out.png
 THERMAL_source2 0 tu154b2/custom/antiice/left_window_rate tu154b2/custom/antiice/left_window_heat

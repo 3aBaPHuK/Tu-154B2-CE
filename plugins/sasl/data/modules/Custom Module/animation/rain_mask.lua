@@ -3,11 +3,11 @@
 -- -- dataRefs
 -- wiper_angle_left = globalPropertyf("tu154b2/custom/anim/wiper_angle_left")
 -- wiper_angle_right = globalPropertyf("tu154b2/custom/anim/wiper_angle_right")
-rain_fr = globalPropertyf("sim/private/controls/rain/friction_static")
-rain_sc = globalPropertyf("sim/private/controls/rain/scale")
+rain_fr = globalPropertyf("tu154b2/anim/frict_front")
+--rain_sc = globalPropertyf("sim/private/controls/rain/scale")
 tas = globalPropertyf("sim/flightmodel/position/true_airspeed")
-rain_spawn = globalPropertyf("sim/private/controls/rain/spawn_adjust")
-rain_fric_dyn = globalPropertyf("sim/private/controls/rain/friction_dynamic")
+--rain_spawn = globalPropertyf("sim/private/controls/rain/spawn_adjust")
+--rain_fric_dyn = globalPropertyf("sim/private/controls/rain/friction_dynamic")
 wip_left = globalPropertyf("tu154b2/custom/anim/wiper_side_1")
 wip_right = globalPropertyf("tu154b2/custom/anim/wiper_side_2")
 frame_time = globalPropertyf("tu154b2/custom/time/frame_time")
@@ -18,15 +18,10 @@ win_R = globalPropertyf("tu154b2/custom/anim/cockpit_window_right")
 
 -- -- Smart Copilot
 ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-local fr_tbl= {{-300, 0.9 }, 
-			{  0, 0.9}, 
-			{  50,0.7},
-		  {  100000, 0.7 }} 
-		  
-local sc_tbl= {{-300, 1 }, 
+local fr_tbl= {{-300, 1 }, 
 			{  0, 1}, 
-			{  70,0.2},
-		  {  100000, 0.2 }} 
+			{  75,0.87},
+		  {  100000, 0.87 }} 
 local wip_L = 0
 local wip_Lim_L = 0
 local wip_R = 0
@@ -34,20 +29,19 @@ local wip_Lim_R = 0
 local open_L = 0
 local open_R = 0
 function update()
-	local skor=get(tas)
-	local friction=0.9--interpolate(fr_tbl,skor)
-	local scale=interpolate(sc_tbl,skor)
+	local skor = get(tas)
+	local friction = interpolate(fr_tbl,skor)
 	local passed = get(frame_time)
 	
-	local MASTER = get(ismaster) ~= 1	
+	--local MASTER = get(ismaster) ~= 1	
 		
 
-	if MASTER then	
+	--if MASTER then	
 		set(rain_fr,friction)
-		set(rain_sc,scale)
-		set(rain_fric_dyn,0)
-		set(rain_spawn,2)
-	end	
+		-- set(rain_sc,scale)
+		-- set(rain_fric_dyn,0)
+		-- set(rain_spawn,2)
+	--end	
 	-- fake wipers for sliding windows
 	if open_L == 0 and get(win_L) > 0.7 then
 		open_L = 1

@@ -2,7 +2,7 @@ I
 800
 OBJ
 
-GLOBAL_cockpit_lit
+
 TEXTURE	Cockpit_glass_out.png
 GLOBAL_specular	1
 BLEND_GLASS

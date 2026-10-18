@@ -53,7 +53,9 @@ function update()
         if (viewext+cockpitdoor+walking+head_z_loc) == 0 then
 			set(optimize_cab,1)
 			if  get(agl) > 1000 then
-				set(optimize,1)
+				--set(optimize,1)
+			else
+				--set(optimize,0)
 			end           
         else
             set(optimize,0)

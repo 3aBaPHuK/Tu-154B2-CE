@@ -318,13 +318,13 @@ local function small_lamps()
 	fuel_tank1_used_brt = math.max(fuel_tank1_used_brt * lamps_brt, test_btn) 
 	set(fuel_tank1_used, fuel_tank1_used_brt)
 	
-	local oil_meter_qty_1_brt = math.max(get(gauges_on_1) * lamps_brt, test_btn) 
+	local oil_meter_qty_1_brt = math.max( lamps_brt, test_btn) 
 	set(oil_meter_qty_1, oil_meter_qty_1_brt)
 	
-	local oil_meter_qty_2_brt = math.max(get(gauges_on_2) * lamps_brt, test_btn) 
+	local oil_meter_qty_2_brt = math.max(lamps_brt, test_btn) 
 	set(oil_meter_qty_2, oil_meter_qty_2_brt)
 	
-	local oil_meter_qty_3_brt = math.max(get(gauges_on_3) * lamps_brt, test_btn) 
+	local oil_meter_qty_3_brt = math.max(lamps_brt, test_btn) 
 	set(oil_meter_qty_3, oil_meter_qty_3_brt)
 	
 

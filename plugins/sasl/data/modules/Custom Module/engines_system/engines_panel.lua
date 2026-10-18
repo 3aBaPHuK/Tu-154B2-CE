@@ -288,12 +288,12 @@ end
 
 local function reset_switchers()
 	if get(eng1_N2) < 5 and get(eng2_N2) < 5 and get(eng3_N2) < 5 then
-		set(gauges_on_1, 0)
-		set(gauges_on_2, 0)
-		set(gauges_on_3, 0)
-		set(gauges_on_1_cap, 1)
-		set(gauges_on_2_cap, 1)
-		set(gauges_on_3_cap, 1)
+		-- set(gauges_on_1, 0)
+		-- set(gauges_on_2, 0)
+		-- set(gauges_on_3, 0)
+		-- set(gauges_on_1_cap, 1)
+		-- set(gauges_on_2_cap, 1)
+		-- set(gauges_on_3_cap, 1)
 	end
 	
 	notLoaded = false

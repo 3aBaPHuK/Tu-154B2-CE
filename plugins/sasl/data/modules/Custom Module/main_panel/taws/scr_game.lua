@@ -5,7 +5,7 @@ defineProperty("mode_set", globalPropertyi("tu154b2/custom/taws/mode_set")) -- �
 
 -- time
 defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) -- flight time
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 -- controls
 defineProperty("but_view", globalPropertyi("tu154b2/custom/buttons/srpbz/but_view")) -- кнопка ВИД

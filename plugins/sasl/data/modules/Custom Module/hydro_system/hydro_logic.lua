@@ -124,7 +124,6 @@ gear1_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[0]")  -- deplo
 gear2_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[1]")  -- deploy of right gear
 gear3_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[2]")  -- deploy of left gear
 
-gears_retr_lock = globalPropertyi("tu154b2/custom/switchers/gears_retr_lock") -- блокировка уборки шасси
 gears_ext_3GS = globalPropertyi("tu154b2/custom/switchers/gears_ext_3GS") -- выпуск шасси от 3ГС
 emerg_gear_ext = globalPropertyi("tu154b2/custom/controll/emerg_gear_ext") -- ручка аварийного выпуска шасси
 gear_lever = globalPropertyi("tu154b2/custom/controll/gear_lever") -- ручка выпуска шасси. -1 - уборка, 0 - нейтр, +1 - выпуск
@@ -168,8 +167,8 @@ fluid_3 = globalPropertyf("tu154b2/custom/hydro/gear_fluid_3")
 
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 elev_coeff = globalPropertyf("tu154b2/custom/controlls/elev_coeff")
 rud_coeff = globalPropertyf("tu154b2/custom/controlls/rudder_coeff")
 

@@ -144,7 +144,7 @@ stu_toga_lamp = globalPropertyf("tu154b2/custom/lights/small/stu_toga") -- УХ�
 
 bkk_pitch = globalPropertyf("tu154b2/custom/bkk/bkk_pitch") -- результирующий тангаж от БКК
 bkk_roll = globalPropertyf("tu154b2/custom/bkk/bkk_roll") -- результирующий тангаж от БКК
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 search_run = globalPropertyf("tu154b2/custom/absu/ppn_search_delay")
 -- search_started = globalPropertyi("tu154b2/custom/absu/ppn_search_started")
 absu_bap_pitch_fail = globalPropertyi("tu154b2/custom/failures/absu_bap_pitch_fail")

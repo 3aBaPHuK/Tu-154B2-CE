@@ -58,8 +58,8 @@ qnh_set = globalPropertyf("sim/cockpit2/gauges/actuators/barometer_setting_in_hg
 -- defineProperty("db4", globalPropertyf("tu154b2/custom/controlls/debug4"))
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 
 
@@ -306,7 +306,7 @@ function update()
 	set(alt_svs, alt_act)	
 	set(svs_alt_rel,alt_rel_act)
 	if get(ismaster) ~= 1 then	
-		set(mach_svs, mach_act)´
+		set(mach_svs, mach_act)
 		set(tas_svs, tas_act)
 		set(tas_sc,true_AS)
 		set(svs_ready,bool2int(pwr))

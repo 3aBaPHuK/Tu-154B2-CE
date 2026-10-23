@@ -110,7 +110,7 @@ defineProperty("static_fail_R", globalPropertyi("tu154b2/custom/failures/static2
 defineProperty("uap_fail", globalPropertyi("tu154b2/custom/failures/AOA")) -- fail
 ai_type = globalPropertyi("sim/custom/t154gnd/ai_fluid_type")
 ai_timeout = globalPropertyf("sim/custom/t154gnd/ai_fluid_timeout_set")
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 local text_-- font = loadBitmapFont(moduleDirectory .."/Custom Module/basic_font.fnt")
 

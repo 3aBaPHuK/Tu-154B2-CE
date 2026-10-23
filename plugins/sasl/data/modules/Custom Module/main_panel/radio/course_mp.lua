@@ -76,8 +76,8 @@ defineProperty("dir", globalPropertyi("sim/custom/b2/kurs_mp_1_dir"))
 
 
 -- Smart Copilot
-ismaster = globalPropertyi("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyi("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyi("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyi("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 
 

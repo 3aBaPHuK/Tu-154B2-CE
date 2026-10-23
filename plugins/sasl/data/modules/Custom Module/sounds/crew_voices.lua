@@ -3,7 +3,7 @@ defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) 
 defineProperty("hide_rus_objects", globalPropertyi("tu154b2/custom/lang/hide_rus_objects")) -- спрятать русские объекты кабины
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 
 

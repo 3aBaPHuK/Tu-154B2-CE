@@ -19,8 +19,8 @@ defineProperty("slip_rate_ind", globalPropertyf("tu154b2/custom/gauges/misc/slip
 defineProperty("turn_rate_ind", globalPropertyf("tu154b2/custom/gauges/misc/turn_rate_ind")) -- индикатор разворота
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 
 

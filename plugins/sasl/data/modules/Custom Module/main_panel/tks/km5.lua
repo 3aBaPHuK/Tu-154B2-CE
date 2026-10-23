@@ -35,8 +35,8 @@ defineProperty("flux_err", globalPropertyf("tu154b2/custom/tks/flux_initial_err"
 defineProperty("flux_err_dist", globalPropertyf("tu154b2/custom/tks/flux_initial_dist"))
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 defineProperty("tks_on", globalPropertyi("tu154b2/custom/switchers/ovhd/tks_on_1")) -- выключатель ТКС 
 roll_a = globalPropertyf("sim/flightmodel/position/P_dot")
 defineProperty("roll_factor", 1)

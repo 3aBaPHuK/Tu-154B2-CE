@@ -227,7 +227,7 @@ simDR_door_cockpit_anim = find_dataref("tu154b2/custom/anim/cockpit_door")
 simDR_head_z = find_dataref("sim/graphics/view/pilots_head_z")
 
 
-simDR_scp = find_dataref("scp/api/ismaster")
+simDR_scp = find_dataref("tu154b2/crew/ismaster")
 
 ----
 

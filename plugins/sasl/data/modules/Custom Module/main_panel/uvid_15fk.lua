@@ -46,7 +46,7 @@ vem_sw = globalPropertyi("tu154b2/custom/switchers/ovhd/vbe_1_on")
 
 real_alt = globalPropertyi("sim/custom/t154cfg/ppd_icing")
 
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 -- defineProperty("db4", globalPropertyf("tu154b2/custom/controlls/debug4"))
 -- defineProperty("db5", globalPropertyf("tu154b2/custom/controlls/debug5"))

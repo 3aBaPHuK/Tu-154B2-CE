@@ -4,7 +4,7 @@ frame_time = globalPropertyf("tu154b2/custom/time/frame_time") -- time of frame
 absu_power_27 = globalPropertyi("tu154b2/custom/absu_power_27")
 absu_power = globalPropertyi("tu154b2/custom/absu_power_cc")
 eng1_N1 = globalProperty("sim/flightmodel/engine/ENGN_N1_[0]") -- engine 1 rpm
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 --absu_damp_pitch_fail = globalPropertyi("tu154b2/custom/failures/absu_damp_pitch_fail")
 roll_rate = globalPropertyf("sim/flightmodel/position/P") -- deg/sec	The roll rotation rates (relative to the flight)
 pitch_rate = globalPropertyf("sim/flightmodel/position/Q") -- deg/sec	The pitch rotation rates (relative to the flight)
@@ -13,7 +13,7 @@ bus36_volt = globalPropertyf("tu154b2/custom/elec/bus36_volt_left")
 -- db1 = globalPropertyf("tu154b2/custom/controlls/debug1")
 -- db2 = globalPropertyf("tu154b2/custom/controlls/debug2")
 -- db3 = globalPropertyf("tu154b2/custom/controlls/debug3")
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 
 absu_svk_tbl.bdg_tet_rate_1 = 0

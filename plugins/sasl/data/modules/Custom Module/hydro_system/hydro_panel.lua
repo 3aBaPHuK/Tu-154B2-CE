@@ -1,5 +1,5 @@
 local crew_control = dofile(sasl.getAircraftPath() .. "/plugins/sasl/data/modules/Custom Module/crew_control.lua")
-local crew_master = globalPropertyf("scp/api/ismaster")
+local crew_master = globalPropertyf("tu154b2/crew/ismaster")
 -- this is hydraulic panel
 
 -- gauges

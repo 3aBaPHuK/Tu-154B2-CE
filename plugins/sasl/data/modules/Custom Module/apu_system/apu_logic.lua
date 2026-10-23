@@ -69,8 +69,8 @@ baro_press = globalPropertyf("sim/weather/barometer_sealevel_inhg")  -- pressure
 reset_state = globalPropertyi("tu154b2/custom/reset_state") -- сброс состояния самолета
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
---hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+--hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 
 -- failures

@@ -43,7 +43,7 @@ max_n2 = globalPropertyf("tu154b2/engine/max_KVD")
 nom_n2 = globalPropertyf("tu154b2/engine/nom_KVD")
 to_sfc = globalPropertyf("sim/aircraft/overflow/jet_SFC_takeoff")
 sfc_to_rpm = globalPropertyf("sim/aircraft/overflow/jet_N1_takeoff")
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 idle_FF = globalPropertyf("sim/aircraft/overflow/ff_rat_idle_JET")
 eng1_ice = globalProperty("sim/flightmodel/failures/inlet_ice_per_engine[0]")
 eng2_ice = globalProperty("sim/flightmodel/failures/inlet_ice_per_engine[1]")

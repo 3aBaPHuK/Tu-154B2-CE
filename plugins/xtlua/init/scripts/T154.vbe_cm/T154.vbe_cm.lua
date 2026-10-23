@@ -60,7 +60,7 @@ vbe_right_h_rot= deferred_dataref("sim/custom/gauges/alt/vbe_right_h_rot", "numb
 vbe_right_p_rot= deferred_dataref("sim/custom/gauges/alt/vbe_right_p_rot", "number")
 vbe_right_h_push= deferred_dataref("sim/custom/gauges/alt/vbe_right_h_push", "number")
 vbe_right_p_push= deferred_dataref("sim/custom/gauges/alt/vbe_right_p_push", "number")
-master = find_dataref("scp/api/ismaster")
+master = find_dataref("tu154b2/crew/ismaster")
 
 ssos_alarm = deferred_dataref("sim/custom/ssos_alarm", "number")
 

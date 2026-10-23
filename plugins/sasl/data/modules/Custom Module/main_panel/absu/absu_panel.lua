@@ -193,14 +193,6 @@ absu_course_out = globalPropertyi("tu154b2/custom/absu_course_out") -- flying ou
 absu_gs_out = globalPropertyi("tu154b2/custom/absu_gs_out") -- flying outside the course limits
 
 
-pkp_fail_left = globalPropertyf("tu154b2/custom/gauges/ahz/ahz_flag_L") -- 
-pkp_fail_right = globalPropertyf("tu154b2/custom/gauges/ahz/ahz_flag_R") -- 
-mgv_contr_fail = globalPropertyf("tu154b2/custom/gyro/mgv_contr_flag") -- 
-
-
-pressure_ind_1 = globalPropertyf("tu154b2/custom/gauges/hydro/pressure_ind_1") -- индикатор давления гидросистемы 1
-pressure_ind_2 = globalPropertyf("tu154b2/custom/gauges/hydro/pressure_ind_2") -- индикатор давления гидросистемы 2
-pressure_ind_3 = globalPropertyf("tu154b2/custom/gauges/hydro/pressure_ind_3") -- индикатор давления гидросистемы 3
 
 sau_stu_on = globalPropertyi("tu154b2/custom/switchers/ovhd/sau_stu_on")  -- САУ СТУ выключатель
 
@@ -271,8 +263,8 @@ trimm_2 = globalPropertyi("sim/custom/b2/elev_trimm_2_pk")
 trimm_1_cap = globalPropertyi("sim/custom/b2/elev_trimm_1_pk_cap")
 trimm_2_cap = globalPropertyi("sim/custom/b2/elev_trimm_2_pk_cap")
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 pilot_Z = globalPropertyf("sim/aircraft/view/acf_peZ")
 pilot_X = globalPropertyf("sim/aircraft/view/acf_peX")
 pilot_head = globalPropertyi("sim/graphics/view/pilots_head_psi")
@@ -1070,8 +1062,9 @@ function update()
 	buttons()
 	switchers()
 	caps()
+	lamps()
 	if get(ismaster) ~= 1 then
-		lamps()
+		--lamps()
 		gauges()
 	end
 

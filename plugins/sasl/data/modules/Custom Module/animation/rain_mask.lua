@@ -17,7 +17,7 @@ win_R = globalPropertyf("tu154b2/custom/anim/cockpit_window_right")
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
 
 -- -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 local fr_tbl= {{-300, 1 }, 
 			{  0, 1}, 
 			{  75,0.87},

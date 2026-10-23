@@ -76,7 +76,7 @@ vbe_2 = find_dataref("tu154b2/custom/switchers/ovhd/vbe_2_on")
 xpdr_fail=find_dataref("sim/operation/failures/rel_xpndr")
 alt_fail=find_dataref("tu154b2/custom/tcas/tcas_alt_fail")
 
-SC_master=find_dataref("scp/api/ismaster")
+SC_master=find_dataref("tu154b2/crew/ismaster")
 local tcas_test_start = 0
 
 

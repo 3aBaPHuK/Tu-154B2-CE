@@ -62,7 +62,7 @@ defineProperty("current_Z2", globalPropertyf("tu154b2/custom/nvu/current_Z2"))  
 defineProperty("current_S2", globalPropertyf("tu154b2/custom/nvu/current_S2"))        -- S value for second route leg
 
 defineProperty("sd75_on", globalPropertyi("tu154b2/custom/switchers/ovhd/sd75_1_on")) -- TODO: implement proper SD-67
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster"))
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster"))
 -- Utility: truncate a number to at most two decimal places (no rounding)
 local function truncate2(num)
     return math.modf(num * 100) / 100

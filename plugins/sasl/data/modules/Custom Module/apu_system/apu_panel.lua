@@ -100,7 +100,7 @@ pilot_Z = globalPropertyf("sim/aircraft/view/acf_peZ")
 pilot_X = globalPropertyf("sim/aircraft/view/acf_peX")
 pilot_head = globalPropertyi("sim/graphics/view/pilots_head_psi")
 gear_defl = globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[1]")
-ismaster = globalPropertyf("scp/api/ismaster")
+ismaster = globalPropertyf("tu154b2/crew/ismaster")
 lamp_1 = globalPropertyi("tu154b2/custom/failures/lamp_20")
 
 

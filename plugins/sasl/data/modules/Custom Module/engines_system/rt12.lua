@@ -51,7 +51,7 @@ defineProperty("kpp3", globalPropertyf("tu154b2/custom/engine/kpp3"))
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 
 

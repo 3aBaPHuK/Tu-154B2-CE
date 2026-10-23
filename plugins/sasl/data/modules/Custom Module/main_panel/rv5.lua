@@ -33,7 +33,7 @@ defineProperty("rv_lamp", globalPropertyf("tu154b2/custom/lights/small/rv5_left_
 
 defineProperty("rv_сс", globalPropertyf("tu154b2/custom/elec/rv5_left_cc"))  -- Current consumption
 defineProperty("kontur_90th", globalPropertyi("sim/custom/b2/kontur_90th"))
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 defineProperty("light_lim", globalPropertyf("sim/custom/b2/rv5_1_lit_lim"))
 bank = globalPropertyf("sim/flightmodel2/position/true_phi")
 

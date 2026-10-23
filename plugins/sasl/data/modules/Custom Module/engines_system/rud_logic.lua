@@ -74,8 +74,8 @@ throttle_ratio_all = globalPropertyf("sim/cockpit2/engine/actuators/throttle_rat
 
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 --kontur_on = globalPropertyf("tu154b2/custom/b2/kontur_on") -- 
 
 rt1_red = globalPropertyf("tu154b2/custom/SC/engine/rt_red1")
@@ -145,7 +145,7 @@ R_3 =  globalProperty("sim/cockpit2/engine/indicators/thrust_dry_n[2]")
 R_SC_1 = globalPropertyf("tu154b2/custom/SC/thrust_1")
 R_SC_2 = globalPropertyf("tu154b2/custom/SC/thrust_2")
 R_SC_3 = globalPropertyf("tu154b2/custom/SC/thrust_3")
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 control_thro_other = globalPropertyf("tu154b2/custom/SC/control_thro_other") -- другой человек упраляет РУД-ами
 
 -- db1 = globalPropertyf("tu154b2/custom/controlls/debug1")

@@ -36,7 +36,7 @@ pkp = globalProperty("tu154b2/custom/switchers/ovhd/pkp_left_on")
 pkp_fail = globalPropertyi("sim/operation/failures/rel_ss_ahz")
 az = globalProperty("sim/cockpit2/EFIS/EFIS_weather_sector_brg")
 kont_dist_mode = globalPropertyi("sim/custom/kontur/dist_mode_l")
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 wx_alpha = globalPropertyf("sim/cockpit2/EFIS/EFIS_weather_alpha")
 wx_alpha_fo = globalPropertyf("sim/cockpit2/EFIS/EFIS_weather_alpha_copilot")
 taws = globalPropertyi("sim/custom/kontur/left_taws")

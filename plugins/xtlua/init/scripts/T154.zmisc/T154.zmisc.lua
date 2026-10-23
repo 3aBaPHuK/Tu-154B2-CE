@@ -350,7 +350,7 @@ rpm_thr_loc = deferred_dataref("sim/custom/rpm_thr_loc", "number")
 airflow_eject_swc =  find_dataref("sim/custom/b2/airflow_eject")
 simDR_ard_temp =  find_dataref("tu154b2/custom/kskv/ard_temp")
 
-simDR_scp = find_dataref("scp/api/ismaster")
+simDR_scp = find_dataref("tu154b2/crew/ismaster")
 
 
 local simDR_sard_press = 0

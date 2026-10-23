@@ -15,7 +15,7 @@ defineProperty("aileron_pos_ind", globalPropertyf("tu154b2/custom/gauges/misc/ai
 defineProperty("elevator_pos_ind", globalPropertyf("tu154b2/custom/gauges/misc/elevator_pos_ind")) -- индикатор положения РВ
 
 defineProperty("absu_power_27", globalPropertyi("tu154b2/custom/absu_power_27"))
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster"))
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster"))
 
 function update()
 	local power=get(absu_power_27)

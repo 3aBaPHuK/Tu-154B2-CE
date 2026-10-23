@@ -60,8 +60,8 @@ kontur70 = globalPropertyi("sim/custom/b2/kontur_70th")
 -- z_bok = globalPropertyf("sim/custom/kontur/zbok")
 -- z_bok_nm = globalPropertyf("sim/custom/kontur/zbok_nm")
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 -- defineProperty("dbstr", globalPropertys("tu154b2/custom/controlls/debugstr"))
 -- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))

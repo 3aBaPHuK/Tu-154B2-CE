@@ -115,8 +115,8 @@ defineProperty("sta_type_left", globalPropertyi("tu154b2/custom/radio/ils_left")
 defineProperty("sta_type_right", globalPropertyi("tu154b2/custom/radio/ils_right"))
 defineProperty("mag_psi", globalPropertyf("sim/flightmodel/position/mag_psi")) -- mag course
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
---defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+--defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 
 

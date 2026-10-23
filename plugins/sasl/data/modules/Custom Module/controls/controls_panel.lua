@@ -155,8 +155,8 @@ trimm_azs = globalPropertyi("sim/custom/switchers/emerg_trimm_azs")
 main_gear_flaps = globalPropertyi("tu154b2/custom/alarm/main_gear_flaps") -- не взлетное положение закрылков или не выпущенны шасси
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyf("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 elev_coeff = globalPropertyf("tu154b2/custom/controlls/elev_coeff")
 

@@ -38,7 +38,7 @@ simDR_sd75_1 = find_dataref("tu154b2/custom/switchers/ovhd/sd75_1_on")
 simDR_sd75_2 = find_dataref("tu154b2/custom/switchers/ovhd/sd75_2_on") 
 simDR_nav1_rotary = find_dataref("tu154b2/custom/rotary/ovhd/nav_1_right")
 simDR_nav_has_dme = find_dataref("sim/cockpit2/radios/indicators/nav_has_dme")
-master = find_dataref("scp/api/ismaster")
+master = find_dataref("tu154b2/crew/ismaster")
 
 simDR_hsi_sel = find_dataref("sim/cockpit/switches/HSI_selector")
 

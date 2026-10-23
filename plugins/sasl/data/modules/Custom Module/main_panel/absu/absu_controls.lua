@@ -1,109 +1,108 @@
 -- this is the improved ABSU logic
 
-defineProperty("joy_pitch", globalPropertyf("tu154b2/custom/SC/yoke_pitch_ratio")) 
-defineProperty("joy_roll", globalPropertyf("tu154b2/custom/SC/yoke_roll_ratio")) 
-defineProperty("joy_yaw", globalPropertyf("tu154b2/custom/SC/yoke_heading_ratio")) 
+joy_pitch = globalPropertyf("tu154b2/custom/SC/yoke_pitch_ratio")
+joy_roll = globalPropertyf("tu154b2/custom/SC/yoke_roll_ratio")
+joy_yaw = globalPropertyf("tu154b2/custom/SC/yoke_heading_ratio")
 
 
-defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) -- time of frame
+frame_time = globalPropertyf("tu154b2/custom/time/frame_time")-- time of frame
 
-defineProperty("absu_turn_handle", globalPropertyi("tu154b2/custom/switchers/console/absu_turn_handle")) -- ручка поворота
-defineProperty("absu_pitch_wheel", globalPropertyi("tu154b2/custom/switchers/console/absu_pitch_wheel")) -- колесико спуска, подъема
+absu_turn_handle = globalPropertyi("tu154b2/custom/switchers/console/absu_turn_handle")-- ручка поворота
+absu_pitch_wheel = globalPropertyi("tu154b2/custom/switchers/console/absu_pitch_wheel")-- колесико спуска, подъема
 
-defineProperty("absu_zpu_sel", globalPropertyi("tu154b2/custom/switchers/console/absu_zpu_sel")) -- переключатель ЗПУ. лев - прав
-defineProperty("ZK_select", globalPropertyi("tu154b2/custom/switchers/ZK_select")) -- тумблер "ввод ЗК" на передней панели. 0-лев, 1-прав	0
+absu_zpu_sel = globalPropertyi("tu154b2/custom/switchers/console/absu_zpu_sel")-- переключатель ЗПУ. лев - прав
+ZK_select = globalPropertyi("tu154b2/custom/switchers/ZK_select")-- тумблер "ввод ЗК" на передней панели. 0-лев, 1-прав	0
 
-defineProperty("absu_smooth_on", globalPropertyi("tu154b2/custom/switchers/console/absu_smooth_on")) -- тумблер "вкл в болтанку"
+absu_smooth_on = globalPropertyi("tu154b2/custom/switchers/console/absu_smooth_on")-- тумблер "вкл в болтанку"
 
-defineProperty("absu_nav_on", globalPropertyi("tu154b2/custom/switchers/console/absu_nav_on")) -- стрелки навигация
-defineProperty("absu_landing_on", globalPropertyi("tu154b2/custom/switchers/console/absu_landing_on")) -- стрелки посадка
---defineProperty("absu_needles_on", globalPropertyi("tu154b2/custom/switchers/console/absu_needles_on")) -- стрелки
+absu_nav_on = globalPropertyi("tu154b2/custom/switchers/console/absu_nav_on")-- стрелки навигация
+absu_landing_on = globalPropertyi("tu154b2/custom/switchers/console/absu_landing_on")-- стрелки посадка
+--absu_needles_on = globalPropertyi("tu154b2/custom/switchers/console/absu_needles_on")-- стрелки
 
-defineProperty("nav_select", globalPropertyi("tu154b2/custom/switchers/nav_select")) -- тумблер НВУ-СНС 0 - НВУ, 1 - СНС
-
-
---defineProperty("absu_speed_test_1", globalPropertyi("tu154b2/custom/buttons/console/absu_speed_test_1")) -- кнопка првоерки СТУ нижняя
---defineProperty("absu_speed_test_2", globalPropertyi("tu154b2/custom/buttons/console/absu_speed_test_2")) -- кнопка првоерки СТУ верхняя
+nav_select = globalPropertyi("tu154b2/custom/switchers/nav_select")-- тумблер НВУ-СНС 0 - НВУ, 1 - СНС
 
 
-defineProperty("absu_use_second_nav", globalPropertyi("tu154b2/custom/absu_use_second_nav")) -- АБСУ использует второй КурсМП
+--absu_speed_test_1 = globalPropertyi("tu154b2/custom/buttons/console/absu_speed_test_1")-- кнопка првоерки СТУ нижняя
+--absu_speed_test_2 = globalPropertyi("tu154b2/custom/buttons/console/absu_speed_test_2")-- кнопка првоерки СТУ верхняя
+
+
+absu_use_second_nav = globalPropertyi("tu154b2/custom/absu_use_second_nav")-- АБСУ использует второй КурсМП
 
 
 
 -- PNP
-defineProperty("pkp_course_L", globalPropertyf("tu154b2/custom/gauges/compas/pkp_helper_course_L")) -- устанвока курса желтой стрелкой на ПКП
-defineProperty("pkp_course_R", globalPropertyf("tu154b2/custom/gauges/compas/pkp_helper_course_R")) -- устанвока курса желтой стрелкой на ПКП
+pkp_course_L = globalPropertyf("tu154b2/custom/gauges/compas/pkp_helper_course_L")-- устанвока курса желтой стрелкой на ПКП
+pkp_course_R = globalPropertyf("tu154b2/custom/gauges/compas/pkp_helper_course_R")-- устанвока курса желтой стрелкой на ПКП
 
-defineProperty("pkp_gyro_course_L", globalPropertyf("tu154b2/custom/gauges/compas/pkp_gyro_course_L")) -- курс гироскопа ПКП
-defineProperty("pkp_gyro_course_R", globalPropertyf("tu154b2/custom/gauges/compas/pkp_gyro_course_R")) -- курс гироскопа ПКП
+pkp_gyro_course_L = globalPropertyf("tu154b2/custom/gauges/compas/pkp_gyro_course_L")-- курс гироскопа ПКП
+pkp_gyro_course_R = globalPropertyf("tu154b2/custom/gauges/compas/pkp_gyro_course_R")-- курс гироскопа ПКП
 
 
-defineProperty("pkp_obs_1", globalPropertyf("tu154b2/custom/gauges/compas/pkp_obs_L")) -- курс полета на ПКП
-defineProperty("pkp_obs_2", globalPropertyf("tu154b2/custom/gauges/compas/pkp_obs_R")) -- курс полета на ПКП
+pkp_obs_1 = globalPropertyf("tu154b2/custom/gauges/compas/pkp_obs_L")-- курс полета на ПКП
+pkp_obs_2 = globalPropertyf("tu154b2/custom/gauges/compas/pkp_obs_R")-- курс полета на ПКП
 
 
 -- SVS
-defineProperty("mach_svs", globalPropertyf("tu154b2/custom/svs/machno")) -- Mach number
-defineProperty("h", globalPropertyf("tu154b2/custom/svs/altitude")) --
---defineProperty("tas_svs", globalPropertyf("tu154b2/custom/svs/true_airspeed")) -- TAS
+mach_svs = globalPropertyf("tu154b2/custom/svs/machno")-- Mach number
+h = globalPropertyf("tu154b2/custom/svs/altitude")--
+--tas_svs = globalPropertyf("tu154b2/custom/svs/true_airspeed")-- TAS
 
-defineProperty("ias", globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_stby")) -- indicated airspeed in KTS
+ias = globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_stby")-- indicated airspeed in KTS
 
 -- NVU
-defineProperty("nvu_res_course", globalPropertyf("tu154b2/custom/nvu/nvu_res_course")) -- курс полета по НВУ
-defineProperty("nvu_res_z", globalPropertyf("tu154b2/custom/nvu/nvu_res_z")) -- смещение от курса полета НВУ
+nvu_res_course = globalPropertyf("tu154b2/custom/nvu/nvu_res_course")-- курс полета по НВУ
+nvu_res_z = globalPropertyf("tu154b2/custom/nvu/nvu_res_z")-- смещение от курса полета НВУ
 
 -- ABSU modes
-defineProperty("roll_main_mode", globalPropertyi("tu154b2/custom/absu/roll_main_mode")) -- основной режим АБСУ по крену. 0 - выкл, 1 - штурвальный - 2 - стаб
-defineProperty("pitch_main_mode", globalPropertyi("tu154b2/custom/absu/pitch_main_mode")) -- основной режим АБСУ по тангажу. 0 - выкл, 1 - штурвальный - 2 - стаб
+roll_main_mode = globalPropertyi("tu154b2/custom/absu/roll_main_mode")-- основной режим АБСУ по крену. 0 - выкл, 1 - штурвальный - 2 - стаб
+pitch_main_mode = globalPropertyi("tu154b2/custom/absu/pitch_main_mode")-- основной режим АБСУ по тангажу. 0 - выкл, 1 - штурвальный - 2 - стаб
 
-defineProperty("roll_sub_mode", globalPropertyi("tu154b2/custom/absu/roll_sub_mode")) -- режим АБСУ по крену. 0 - выкл, 1 - стаб, 2 - ЗК, 3 - НВУ, 4 - АЗ1, 5 - АЗ2, 6 - заход
-defineProperty("pitch_sub_mode", globalPropertyi("tu154b2/custom/absu/pitch_sub_mode")) -- режим АБСУ по тангажу. 0 - выкл, 1 - стаб, 2 - V, 3 - M, 4 - H, 5 - глисс, 6 - уход
+roll_sub_mode = globalPropertyi("tu154b2/custom/absu/roll_sub_mode")-- режим АБСУ по крену. 0 - выкл, 1 - стаб, 2 - ЗК, 3 - НВУ, 4 - АЗ1, 5 - АЗ2, 6 - заход
+pitch_sub_mode = globalPropertyi("tu154b2/custom/absu/pitch_sub_mode")-- режим АБСУ по тангажу. 0 - выкл, 1 - стаб, 2 - V, 3 - M, 4 - H, 5 - глисс, 6 - уход
 
 
 -- БКК
-defineProperty("bkk_pitch", globalPropertyf("tu154b2/custom/bkk/bkk_pitch")) -- результирующий тангаж от БКК
-defineProperty("bkk_roll", globalPropertyf("tu154b2/custom/bkk/bkk_roll")) -- результирующий тангаж от БКК
+bkk_pitch = globalPropertyf("tu154b2/custom/bkk/bkk_pitch")-- результирующий тангаж от БКК
+bkk_roll = globalPropertyf("tu154b2/custom/bkk/bkk_roll")-- результирующий тангаж от БКК
 
 -- TKS
-defineProperty("course_gpk", globalPropertyf("tu154b2/custom/tks/course_gpk")) -- результирующий курс ТКС - ГПК
-defineProperty("course_gmk", globalPropertyf("tu154b2/custom/tks/course_gmk")) -- результирующий курс ТКС - ГМК
-defineProperty("tks_fail_left", globalPropertyi("tu154b2/custom/tks/fail_left")) -- флаг отказа
-defineProperty("tks_fail_right", globalPropertyi("tu154b2/custom/tks/fail_right")) -- флаг отказа
+course_gpk = globalPropertyf("tu154b2/custom/tks/course_gpk")-- результирующий курс ТКС - ГПК
+course_gmk = globalPropertyf("tu154b2/custom/tks/course_gmk")-- результирующий курс ТКС - ГМК
+tks_fail_left = globalPropertyi("tu154b2/custom/tks/fail_left")-- флаг отказа
+tks_fail_right = globalPropertyi("tu154b2/custom/tks/fail_right")-- флаг отказа
 
 
 -- DISS
-defineProperty("diss_groundspeed", globalPropertyf("tu154b2/custom/nvu/diss_groundspeed")) -- путевая скорость по ДИСС
-defineProperty("diss_slip_angle", globalPropertyf("tu154b2/custom/nvu/diss_slip_angle")) -- угол сноса по ДИСС
+diss_groundspeed = globalPropertyf("tu154b2/custom/nvu/diss_groundspeed")-- путевая скорость по ДИСС
+diss_slip_angle = globalPropertyf("tu154b2/custom/nvu/diss_slip_angle")-- угол сноса по ДИСС
 
 -- Course MP
-defineProperty("obs_1", globalPropertyf("sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot")) -- OBS course
-defineProperty("obs_2", globalPropertyf("sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot")) -- OBS course
-defineProperty("nav_cs_1", globalPropertyf("tu154b2/custom/radio/nav1_cs")) -- course plank
-defineProperty("nav_cs_2", globalPropertyf("tu154b2/custom/radio/nav2_cs")) -- course plank
-defineProperty("nav_gs_1", globalPropertyf("tu154b2/custom/radio/nav1_gs")) -- glideslope
-defineProperty("nav_gs_2", globalPropertyf("tu154b2/custom/radio/nav2_gs")) -- glideslope
+obs_1 = globalPropertyf("sim/cockpit2/radios/actuators/nav1_obs_deg_mag_pilot")-- OBS course
+obs_2 = globalPropertyf("sim/cockpit2/radios/actuators/nav2_obs_deg_mag_pilot")-- OBS course
+nav_cs_1 = globalPropertyf("tu154b2/custom/radio/nav1_cs")-- course plank
+nav_cs_2 = globalPropertyf("tu154b2/custom/radio/nav2_cs")-- course plank
+nav_gs_1 = globalPropertyf("tu154b2/custom/radio/nav1_gs")-- glideslope
+nav_gs_2 = globalPropertyf("tu154b2/custom/radio/nav2_gs")-- glideslope
 
-defineProperty("freq_1", globalPropertyf("sim/cockpit2/radios/actuators/nav1_frequency_hz"))  -- set the frequency
-defineProperty("freq_2", globalPropertyf("sim/cockpit2/radios/actuators/nav2_frequency_hz"))  -- set the frequency
+freq_1 = globalPropertyf("sim/cockpit2/radios/actuators/nav1_frequency_hz") -- set the frequency
+freq_2 = globalPropertyf("sim/cockpit2/radios/actuators/nav2_frequency_hz") -- set the frequency
 
-defineProperty("nav_cs_flag_1", globalPropertyi("tu154b2/custom/radio/nav1_cs_flag"))
-defineProperty("nav_gs_flag_1", globalPropertyi("tu154b2/custom/radio/nav1_gs_flag"))
+nav_cs_flag_1 = globalPropertyi("tu154b2/custom/radio/nav1_cs_flag")
+nav_gs_flag_1 = globalPropertyi("tu154b2/custom/radio/nav1_gs_flag")
 
-defineProperty("nav_cs_flag_2", globalPropertyi("tu154b2/custom/radio/nav2_cs_flag"))
-defineProperty("nav_gs_flag_2", globalPropertyi("tu154b2/custom/radio/nav2_gs_flag"))
+nav_cs_flag_2 = globalPropertyi("tu154b2/custom/radio/nav2_cs_flag")
+nav_gs_flag_2 = globalPropertyi("tu154b2/custom/radio/nav2_gs_flag")
 
-defineProperty("cr_flag_1", globalPropertyf("sim/cockpit2/radios/indicators/nav1_flag_from_to_pilot")) -- Nav-To-From indication, nav1, pilot, 0 is flag, 1 is to, 2 is from.
-defineProperty("cr_flag_2", globalPropertyf("sim/cockpit2/radios/indicators/nav2_flag_from_to_pilot")) -- Nav-To-From indication, nav1, pilot, 0 is flag, 1 is to, 2 is from.
+cr_flag_1 = globalPropertyf("sim/cockpit2/radios/indicators/nav1_flag_from_to_pilot")-- Nav-To-From indication, nav1, pilot, 0 is flag, 1 is to, 2 is from.
+cr_flag_2 = globalPropertyf("sim/cockpit2/radios/indicators/nav2_flag_from_to_pilot")-- Nav-To-From indication, nav1, pilot, 0 is flag, 1 is to, 2 is from.
 
 
 -- KLN
-defineProperty("kln_course", globalPropertyf("tu154b2/custom/kln90/kln_course")) -- курс ЛЗП от КЛН
-defineProperty("kln_dev", globalPropertyf("tu154b2/custom/kln90/kln_dev")) -- отклонение от ЛЗП, мили
+kln_course = globalPropertyf("tu154b2/custom/kln90/kln_course")-- курс ЛЗП от КЛН
+kln_dev = globalPropertyf("tu154b2/custom/kln90/kln_dev")-- отклонение от ЛЗП, мили
 
 
-defineProperty("show_gns", globalPropertyi("tu154b2/custom/anim/show_gns"))
-defineProperty("show_RXP",globalPropertyi("tu154b2/custom/anim/RXP"))
+show_gns = globalPropertyi("tu154b2/custom/anim/show_gns")
 
 -- GNS
 GNS430_dtk = globalPropertyf("tu154b2/custom/SC/GNS430_dtk") -- курс на ГНС
@@ -112,101 +111,101 @@ gps_hdef_dot = globalPropertyf("sim/cockpit/radios/gps_hdef_dot")
 
 
 -- RV
-defineProperty("rv5_alt", globalPropertyf("tu154b2/custom/misc/rv5_alt_left"))  -- высота на левом высотомере
-defineProperty("rv5_alt2", globalPropertyf("tu154b2/custom/misc/rv5_alt_right"))
+rv5_alt = globalPropertyf("tu154b2/custom/misc/rv5_alt_left") -- высота на левом высотомере
+rv5_alt2 = globalPropertyf("tu154b2/custom/misc/rv5_alt_right")
 
-defineProperty("dh_set", globalPropertyf("tu154b2/custom/gauges/alt/radioalt_dh_left"))  -- DH angle
-defineProperty("rv_angle", globalPropertyf("tu154b2/custom/gauges/alt/radioalt_needle_left"))  -- RV needle
+dh_set = globalPropertyf("tu154b2/custom/gauges/alt/radioalt_dh_left") -- DH angle
+rv_angle = globalPropertyf("tu154b2/custom/gauges/alt/radioalt_needle_left") -- RV needle
 
 -- Landing Gears
-defineProperty("gear1_deploy", globalProperty("sim/aircraft/parts/acf_gear_deploy[0]"))  -- deploy of front gear
-defineProperty("gear2_deploy", globalProperty("sim/aircraft/parts/acf_gear_deploy[1]"))  -- deploy of right gear
-defineProperty("gear3_deploy", globalProperty("sim/aircraft/parts/acf_gear_deploy[2]"))  -- deploy of left gear
+gear1_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[0]") -- deploy of front gear
+gear2_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[1]") -- deploy of right gear
+gear3_deploy = globalProperty("sim/aircraft/parts/acf_gear_deploy[2]") -- deploy of left gear
 
 -- flaps
-defineProperty("flap_inn_L", globalPropertyf("sim/flightmodel/controls/wing1l_fla1def")) -- inner flaps left
-defineProperty("flap_inn_R", globalPropertyf("sim/flightmodel/controls/wing1r_fla1def")) -- inner flaps right
---defineProperty("flap_lever", globalPropertyf("tu154b2/custom/controll/flaps_lever"))
+flap_inn_L = globalPropertyf("sim/flightmodel/controls/wing1l_fla1def")-- inner flaps left
+flap_inn_R = globalPropertyf("sim/flightmodel/controls/wing1r_fla1def")-- inner flaps right
+--flap_lever = globalPropertyf("tu154b2/custom/controll/flaps_lever")
 -- ailerons 20, rudder 25, elevator 25-20
 
-defineProperty("gear1_deflect", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]"))  -- vertical deflection of front gear
+gear1_deflect = globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]") -- vertical deflection of front gear
 
 -- results
-defineProperty("absu_roll_ind", globalPropertyf("tu154b2/custom/absu/absu_roll_ind")) -- индикация директора крена
-defineProperty("absu_pitch_ind", globalPropertyf("tu154b2/custom/absu/absu_pitch_ind")) -- индикация директора тангажа
+absu_roll_ind = globalPropertyf("tu154b2/custom/absu/absu_roll_ind")-- индикация директора крена
+absu_pitch_ind = globalPropertyf("tu154b2/custom/absu/absu_pitch_ind")-- индикация директора тангажа
 
-defineProperty("absu_roll_flag", globalPropertyi("tu154b2/custom/absu/absu_roll_flag")) --	флаг директора крена
-defineProperty("absu_pitch_flag", globalPropertyi("tu154b2/custom/absu/absu_pitch_flag")) -- флаг директора тангажа
+absu_roll_flag = globalPropertyi("tu154b2/custom/absu/absu_roll_flag")--	флаг директора крена
+absu_pitch_flag = globalPropertyi("tu154b2/custom/absu/absu_pitch_flag")-- флаг директора тангажа
 
 -- result ABSU controls
-defineProperty("absu_contr_pitch", globalPropertyf("tu154b2/custom/absu/cmd_pitch")) -- отклонение штока РА56 по тангажу
-defineProperty("absu_contr_roll", globalPropertyf("tu154b2/custom/absu/cmd_roll")) -- отклонение штока РА56 по крену
-defineProperty("absu_contr_yaw", globalPropertyf("tu154b2/custom/absu/cmd_yaw")) -- отклонение штока РА56 по направлению
+absu_contr_pitch = globalPropertyf("tu154b2/custom/absu/cmd_pitch")-- отклонение штока РА56 по тангажу
+absu_contr_roll = globalPropertyf("tu154b2/custom/absu/cmd_roll")-- отклонение штока РА56 по крену
+absu_contr_yaw = globalPropertyf("tu154b2/custom/absu/cmd_yaw")-- отклонение штока РА56 по направлению
 
-defineProperty("absu_pitch_trimm", globalPropertyi("tu154b2/custom/absu/absu_pitch_trimm")) -- комманда триммеру от АБСУ. +1 = вверх, -1 = ввениз
+absu_pitch_trimm = globalPropertyi("tu154b2/custom/absu/absu_pitch_trimm")-- комманда триммеру от АБСУ. +1 = вверх, -1 = ввениз
 
-defineProperty("absu_course_out", globalPropertyi("tu154b2/custom/absu_course_out")) -- flying outside the course limits
-defineProperty("absu_gs_out", globalPropertyi("tu154b2/custom/absu_gs_out")) -- flying outside the course limits
+absu_course_out = globalPropertyi("tu154b2/custom/absu_course_out")-- flying outside the course limits
+absu_gs_out = globalPropertyi("tu154b2/custom/absu_gs_out")-- flying outside the course limits
 
 
 
 -- failures
-defineProperty("absu_damp_roll_fail", globalPropertyi("tu154b2/custom/failures/absu_damp_roll_fail")) -- отказ демперов крена
-defineProperty("absu_damp_pitch_fail", globalPropertyi("tu154b2/custom/failures/absu_damp_pitch_fail")) -- отказ демперов тангажа
-defineProperty("absu_damp_yaw_fail", globalPropertyi("tu154b2/custom/failures/absu_damp_yaw_fail")) -- отказ демперов курса
-defineProperty("absu_contr_roll_fail", globalPropertyi("tu154b2/custom/failures/absu_contr_roll_fail")) -- отказ бокового управления
-defineProperty("absu_contr_pitch_fail", globalPropertyi("tu154b2/custom/failures/absu_contr_pitch_fail")) -- отказ продольного управления
-defineProperty("absu_calc_toga_fail", globalPropertyi("tu154b2/custom/failures/absu_calc_toga_fail")) -- отказ вычислителя УХОД
-defineProperty("absu_calc_roll_fail", globalPropertyi("tu154b2/custom/failures/absu_calc_roll_fail")) -- отказ бокового канала СТУ
-defineProperty("absu_calc_pitch_fail", globalPropertyi("tu154b2/custom/failures/absu_calc_pitch_fail")) -- отказ продольного канала СТУ
+absu_damp_roll_fail = globalPropertyi("tu154b2/custom/failures/absu_damp_roll_fail")-- отказ демперов крена
+absu_damp_pitch_fail = globalPropertyi("tu154b2/custom/failures/absu_damp_pitch_fail")-- отказ демперов тангажа
+absu_damp_yaw_fail = globalPropertyi("tu154b2/custom/failures/absu_damp_yaw_fail")-- отказ демперов курса
+absu_contr_roll_fail = globalPropertyi("tu154b2/custom/failures/absu_contr_roll_fail")-- отказ бокового управления
+absu_contr_pitch_fail = globalPropertyi("tu154b2/custom/failures/absu_contr_pitch_fail")-- отказ продольного управления
+absu_calc_toga_fail = globalPropertyi("tu154b2/custom/failures/absu_calc_toga_fail")-- отказ вычислителя УХОД
+absu_calc_roll_fail = globalPropertyi("tu154b2/custom/failures/absu_calc_roll_fail")-- отказ бокового канала СТУ
+absu_calc_pitch_fail = globalPropertyi("tu154b2/custom/failures/absu_calc_pitch_fail")-- отказ продольного канала СТУ
 
 
-defineProperty("man_roll_lamp", globalPropertyi("tu154b2/custom/absu/man_roll_lamp")) 
-defineProperty("man_pitch_lamp", globalPropertyi("tu154b2/custom/absu/man_pitch_lamp")) 
+man_roll_lamp = globalPropertyi("tu154b2/custom/absu/man_roll_lamp")
+man_pitch_lamp = globalPropertyi("tu154b2/custom/absu/man_pitch_lamp")
 
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyf("tu154b2/crew/ismaster")-- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyf("tu154b2/crew/hascontrol_1")-- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 --for ABSU MAN mode
-defineProperty("yoke_pitch", globalPropertyf("tu154b2/custom/controlls/yoke_pitch")) -- поворот штурвала ко тангажу
-defineProperty("int_pitch_trim", globalPropertyf("tu154b2/custom/trimmers/int_pitch_trim")) -- положение триммера руля высоты
-defineProperty("hydro_long_control", globalPropertyi("tu154b2/custom/switchers/eng/hydro_long_control")) -- продольная управляемость
---defineProperty("elev_coeff", globalPropertyf("tu154b2/custom/controlls/elev_coeff"))
-defineProperty("tks_course_set", globalPropertyi("tu154b2/custom/switchers/ovhd/tks_course_set")) -- задатчик курса
+yoke_pitch = globalPropertyf("tu154b2/custom/controlls/yoke_pitch")-- поворот штурвала ко тангажу
+int_pitch_trim = globalPropertyf("tu154b2/custom/trimmers/int_pitch_trim")-- положение триммера руля высоты
+hydro_long_control = globalPropertyi("tu154b2/custom/switchers/eng/hydro_long_control")-- продольная управляемость
+--elev_coeff = globalPropertyf("tu154b2/custom/controlls/elev_coeff")
+tks_course_set = globalPropertyi("tu154b2/custom/switchers/ovhd/tks_course_set")-- задатчик курса
 
 
-defineProperty("h_integral", globalPropertyf("tu154b2/custom/absu/d_H_integral")) 
-defineProperty("v_integral", globalPropertyf("tu154b2/custom/absu/d_V_integral")) 
-defineProperty("m_integral", globalPropertyf("tu154b2/custom/absu/d_M_integral")) 
+h_integral = globalPropertyf("tu154b2/custom/absu/d_H_integral")
+v_integral = globalPropertyf("tu154b2/custom/absu/d_V_integral")
+m_integral = globalPropertyf("tu154b2/custom/absu/d_M_integral")
 
-defineProperty("bshu_tet_fail",globalPropertyi("tu154b2/custom/failures/bshu_tet_fail"))
-defineProperty("bshu_gam_fail",globalPropertyi("tu154b2/custom/failures/bshu_gam_fail"))
-defineProperty("vor_avtomat", globalPropertyi("tu154b2/custom/failures/nvu_vor_avtomat_fail"))
-defineProperty("rv_flag", globalPropertyi("tu154b2/custom/gauges/alt/radioalt_flag_left"))  -- RV flag
-defineProperty("rv_flag2", globalPropertyi("tu154b2/custom/gauges/alt/radioalt_flag_right")) 
-defineProperty("absu_bns_pitch_fail", globalPropertyi("tu154b2/custom/failures/bns_tet_fail"))
-defineProperty("absu_bns_roll_fail", globalPropertyi("tu154b2/custom/failures/bns_gam_fail"))
-defineProperty("outer_marker", globalPropertyi("sim/cockpit/misc/outer_marker_lit"))
-defineProperty("gps_dot", globalPropertyf("sim/cockpit/radios/gps2_hdef_nm_per_dot")) 
-defineProperty("absu_pnp_mode", globalPropertyi("tu154b2/custom/absu/absu_pnp_mode_1"))
---defineProperty("at_mode", globalPropertyi("tu154b2/custom/absu/stu_mode"))
+bshu_tet_fail = globalPropertyi("tu154b2/custom/failures/bshu_tet_fail")
+bshu_gam_fail = globalPropertyi("tu154b2/custom/failures/bshu_gam_fail")
+vor_avtomat = globalPropertyi("tu154b2/custom/failures/nvu_vor_avtomat_fail")
+rv_flag = globalPropertyi("tu154b2/custom/gauges/alt/radioalt_flag_left") -- RV flag
+rv_flag2 = globalPropertyi("tu154b2/custom/gauges/alt/radioalt_flag_right")
+absu_bns_pitch_fail = globalPropertyi("tu154b2/custom/failures/bns_tet_fail")
+absu_bns_roll_fail = globalPropertyi("tu154b2/custom/failures/bns_gam_fail")
+outer_marker = globalPropertyi("sim/cockpit/misc/outer_marker_lit")
+gps_dot = globalPropertyf("sim/cockpit/radios/gps2_hdef_nm_per_dot")
+absu_pnp_mode = globalPropertyi("tu154b2/custom/absu/absu_pnp_mode_1")
+--at_mode = globalPropertyi("tu154b2/custom/absu/stu_mode")
 
--- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
--- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
--- defineProperty("db3", globalPropertyf("tu154b2/custom/controlls/debug3"))
--- defineProperty("db4", globalPropertyf("tu154b2/custom/controlls/debug4"))
+-- db1 = globalPropertyf("tu154b2/custom/controlls/debug1")
+-- db2 = globalPropertyf("tu154b2/custom/controlls/debug2")
+-- db3 = globalPropertyf("tu154b2/custom/controlls/debug3")
+-- db4 = globalPropertyf("tu154b2/custom/controlls/debug4")
 
-defineProperty("pnp_course_flag", globalPropertyi("tu154b2/custom/gauges/compas/pkp_course_flag_L"))
-defineProperty("pnp_gs_flag", globalPropertyi("tu154b2/custom/gauges/compas/pkp_gs_flag_L"))
-defineProperty("sta_type_left", globalPropertyi("tu154b2/custom/radio/ils_left"))
-defineProperty("sta_type_right", globalPropertyi("tu154b2/custom/radio/ils_right"))
-defineProperty("absu_power", globalPropertyi("tu154b2/custom/absu_power_cc"))
-defineProperty("v_left", globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_stby"))
-defineProperty("v_right", globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_copilot"))
---defineProperty("h", globalPropertyf("tu154b2/custom/svs/altitude"))
-defineProperty("absu_gs", globalPropertyi("tu154b2/custom/buttons/console/absu_gs")) -- кнопка глиссада на панели АБСУ
+pnp_course_flag = globalPropertyi("tu154b2/custom/gauges/compas/pkp_course_flag_L")
+pnp_gs_flag = globalPropertyi("tu154b2/custom/gauges/compas/pkp_gs_flag_L")
+sta_type_left = globalPropertyi("tu154b2/custom/radio/ils_left")
+sta_type_right = globalPropertyi("tu154b2/custom/radio/ils_right")
+absu_power = globalPropertyi("tu154b2/custom/absu_power_cc")
+v_left = globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_stby")
+v_right = globalPropertyf("sim/cockpit2/gauges/indicators/airspeed_kts_copilot")
+--h = globalPropertyf("tu154b2/custom/svs/altitude")
+absu_gs = globalPropertyi("tu154b2/custom/buttons/console/absu_gs")-- кнопка глиссада на панели АБСУ
 cockpit_80s = globalPropertyi("sim/custom/b2/kontur_pa_off")
 --temp = globalPropertyf("sim/weather/aircraft/temperature_ambient_deg_c")
 --p_stat_smoothed = globalPropertyf("tu154b2/custom/svs/p_s_smoothed")
@@ -753,6 +752,7 @@ function update()
 		pitch_base = get(bkk_pitch)
 		PU_pitch = 0
 		pitch_res_need = 0
+		set(absu_pitch_trimm, 0)
 		--end
 		
 	end
@@ -1396,8 +1396,8 @@ function pitch_holder(elev_cmd) -- manipulates the elevator and trimmer by given
 	
 	if MASTER then
 		-- set trimmer
-		if (delta+ roll_part) > (0.07-0.035*bool2int(pitch_submode == 6)) and pitch_submode > 0 then set(absu_pitch_trimm, 1)
-		elseif (delta+ roll_part) < (-0.07+0.035*bool2int(pitch_submode == 6)) and pitch_submode > 0 then set(absu_pitch_trimm, -1)
+		if (delta+ roll_part) > (0.07-0.035*bool2int(pitch_submode == 6)) then set(absu_pitch_trimm, 1)
+		elseif (delta+ roll_part) < (-0.07+0.035*bool2int(pitch_submode == 6)) then set(absu_pitch_trimm, -1)
 		else set(absu_pitch_trimm, 0) end
 	end
 		-- set elevator pos

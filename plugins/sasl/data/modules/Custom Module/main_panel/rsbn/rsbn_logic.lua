@@ -39,7 +39,7 @@ defineProperty("azimuth", globalPropertyf("tu154b2/custom/rsbn/azimuth")) -- Ð°Ð
 
 mrs_dot = globalPropertyi("tu154b2/custom/rsbn/morse_dot")
 mrs_dash = globalPropertyi("tu154b2/custom/rsbn/morse_dash")
-ismaster = globalPropertyi("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyi("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 -- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
 -- defineProperty("db3", globalPropertyf("tu154b2/custom/controlls/debug3"))

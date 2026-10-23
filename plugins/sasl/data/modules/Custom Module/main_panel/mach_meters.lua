@@ -18,7 +18,7 @@ defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) 
 defineProperty("mach_ind_left", globalPropertyf("tu154b2/custom/gauges/speed/mach_left")) -- скорость маха КВС
 defineProperty("mach_ind_right", globalPropertyf("tu154b2/custom/gauges/speed/mach_right")) -- скорость маха 2П
 defineProperty("sensors_caps", globalPropertyi("tu154b2/custom/anim/sensors_caps"))  -- чехлы и крышки
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 --defineProperty("db6", globalPropertyf("tu154b2/custom/controlls/debug6"))
 

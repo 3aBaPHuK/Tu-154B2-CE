@@ -125,7 +125,7 @@ defineProperty("gen_4_reg_fail", globalPropertyi("tu154b2/custom/failures/gen_4_
 defineProperty("gpu_reg_fail", globalPropertyi("tu154b2/custom/failures/gpu_regulator_fail"))
 defineProperty("tech", globalPropertyi("sim/custom/t154cfg/hide_def"))
 defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) --time
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 local freq_5=400
 local gpu_load_prev=0

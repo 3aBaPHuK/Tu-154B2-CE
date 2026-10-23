@@ -125,7 +125,7 @@ apd_working_3 = globalPropertyf("tu154b2/custom/start/apd_working_3") -- раб�
 -- defineProperty("db3", globalPropertyf("tu154b2/custom/controlls/debug3"))
 
 -- Smart Copilot
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 -- put oil before every flight
 set(engn_oil_qty_1, math.random() + 29)

@@ -85,8 +85,8 @@ defineProperty("diss_wind_course", globalPropertyf("tu154b2/custom/nvu/diss_wind
 defineProperty("diss_wind_spd", globalPropertyf("tu154b2/custom/nvu/diss_wind_spd")) -- скорость ветра по ДИСС
 defineProperty("rsbn_rec", globalPropertyi("tu154b2/custom/failures/rsbn_rec"))
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 
 -- failures

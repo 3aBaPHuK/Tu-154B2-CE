@@ -51,8 +51,8 @@ sd_1_vol = globalPropertyf("tu154b2/custom/switchers/SD67_1_vol")
 sd_2_vol = globalPropertyf("tu154b2/custom/switchers/SD67_2_vol")
 
 -- Smart Copilot
-ismaster = globalPropertyi("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
-hascontrol_1 = globalPropertyi("scp/api/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+ismaster = globalPropertyi("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+hascontrol_1 = globalPropertyi("tu154b2/crew/hascontrol_1") -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 nav_course_1 = globalPropertyf("tu154b2/custom/rotary/console/nav_1_course_1")
 nav_course_2 = globalPropertyf("tu154b2/custom/rotary/console/nav_2_course_1")

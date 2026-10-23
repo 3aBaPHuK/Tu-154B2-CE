@@ -17,6 +17,10 @@ gs_press_1 = globalPropertyf("tu154b2/custom/hydro/gs_press_1") -- давлен�
 gs_press_2 = globalPropertyf("tu154b2/custom/hydro/gs_press_2") -- давление в ГС2
 gs_press_3 = globalPropertyf("tu154b2/custom/hydro/gs_press_3") -- давление в ГС3
 
+ra1_fail = globalPropertyi("tu154b2/custom/failures/absu_ra1_pitch_fail")
+ra2_fail = globalPropertyi("tu154b2/custom/failures/absu_ra2_pitch_fail")
+ra3_fail = globalPropertyi("tu154b2/custom/failures/absu_ra3_pitch_fail")
+
 
 absu_cmd = globalPropertyf("tu154b2/custom/absu/cmd_pitch")
 
@@ -29,7 +33,7 @@ ppn_snp = globalPropertyf("sim/custom/t154/ppn13_sbk_test")
 pol = globalPropertyi("sim/custom/t154/ppn13_pol")
 absu_power_27 = globalPropertyi("tu154b2/custom/absu_power_27")
 absu_power = globalPropertyi("tu154b2/custom/absu_power_cc")
-ismaster = globalPropertyf("scp/api/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
+ismaster = globalPropertyf("tu154b2/crew/ismaster") -- Master. 0 = plugin not found, 1 = slave 2 = master
 bus36_volt = globalPropertyf("tu154b2/custom/elec/bus36_volt_left")
 spread = globalPropertyf("tu154b2/custom/engines/thro_spread")
 main_mode = globalPropertyi("tu154b2/custom/absu/pitch_main_mode")
@@ -364,8 +368,15 @@ function update()
 			set(hod2,0)
 			set(hod3,0)
 		end
+		set(ra1_fail,absu_svk_tbl.ra1_pitch_fail)
+		set(ra2_fail,absu_svk_tbl.ra2_pitch_fail)
+		set(ra3_fail,absu_svk_tbl.ra3_pitch_fail)
 		-- set(db1,ra_act[0])
 		-- set(db2,ra_act[1])
 		-- set(db3,ra_act[2])
+	else
+		absu_svk_tbl.ra1_pitch_fail = get(ra1_fail)
+		absu_svk_tbl.ra2_pitch_fail = get(ra2_fail)
+		absu_svk_tbl.ra3_pitch_fail = get(ra3_fail)
 	end
 end

@@ -65,8 +65,8 @@ fluid_2 = globalPropertyf("tu154b2/custom/hydro/gear_fluid_2")
 fluid_3 = globalPropertyf("tu154b2/custom/hydro/gear_fluid_3")
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 
 -- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))
 -- defineProperty("db2", globalPropertyf("tu154b2/custom/controlls/debug2"))
@@ -199,8 +199,8 @@ local lock2 = true
 local lock3 = true
 
 local defl_1_prev=get(gear1_deflect)
-local defl_2_prev=get(gear2_deflect)
-local defl_3_prev=get(gear3_deflect)
+-- local defl_2_prev=get(gear2_deflect)
+-- local defl_3_prev=get(gear3_deflect)
 
 local fake_command = false -- this is for fixing X-Plane gear bug. (X-Plane does't have 3 position gear handler)
 
@@ -381,13 +381,10 @@ local MASTER = get(ismaster) ~= 1
 		--local IAS = get(airspeed)
 		
 		-- calculate if gears can retract depending on autoblock
-		local retract = false
-		if get(gear2_deflect) < 0.01 or get(gears_retr_lock) ~= 0 then 
-			retract = true 
-		else 
-			retract = false 
+		local retract = 0
+		if get(gear3_deflect) < 0.01 or get(gears_retr_lock) ~= 0 then 
+			retract = -1
 		end
-		
 		local pump2 = math.min(1,get(rpm_2)/80) * (1-get(pump_2_fail)) -- check if second pump for system no.1 is working
 		
 		-- calculate direction.
@@ -401,7 +398,7 @@ local MASTER = get(ismaster) ~= 1
 		elseif emer_ext == 1 then
 			direction = 1
 		else
-			direction = lever  * power_L
+			direction = math.max(retract, lever  * power_L)
 		end
 		
 		if pos2>0.15 and pos2<0.85 then
@@ -595,8 +592,7 @@ local MASTER = get(ismaster) ~= 1
 		
 		-- limit nosewheel spring travel
 		local defl_1=get(gear1_deflect)
-		local defl_2=get(gear2_deflect)
-		local defl_3=get(gear3_deflect)
+		--local defl_2=get(gear2_deflect)
 		
 		local defl_spd_1=0
 		if passed~=0 then
@@ -617,8 +613,8 @@ local MASTER = get(ismaster) ~= 1
 		
 		set(dmp_1,gear_dmp_1*dmp_coeff)
 		defl_1_prev=defl_1
-		defl_2_prev=defl_2
-		defl_3_prev=defl_3
+		--defl_2_prev=defl_2
+		--defl_3_prev=defl_3
 		-- temperatures
 		local t_le = get(temp_le)
 		local t_out = (get(temp_out) + t_le) / 2

@@ -74,8 +74,8 @@ defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) 
 
 
 -- Smart Copilot
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
-defineProperty("hascontrol_1", globalPropertyf("scp/api/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("hascontrol_1", globalPropertyf("tu154b2/crew/hascontrol_1")) -- Have control. 0 = plugin not found, 1 = no control 2 = has control
 defineProperty("real_psvp", globalPropertyi("sim/custom/t154cfg/apu_heat_start"))
 true_AS = globalPropertyf("sim/flightmodel2/position/true_airspeed")
 -- defineProperty("db1", globalPropertyf("tu154b2/custom/controlls/debug1"))

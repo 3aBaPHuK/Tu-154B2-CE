@@ -31,7 +31,7 @@ defineProperty("weel_angle2", globalPropertyf("sim/aircraft/gear/acf_nw_steerdeg
 
 defineProperty("lock", globalPropertyi("sim/cockpit2/controls/nosewheel_steer_on"))
 defineProperty("tiller_angle", globalPropertyf("tu154b2/custom/anim/tiller_pos"))
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 defineProperty("frame_time", globalPropertyf("tu154b2/custom/time/frame_time")) -- time of frame
 defineProperty("deflection_mtr_1", globalProperty("sim/flightmodel2/gear/tire_vertical_deflection_mtr[0]"))
 defineProperty("groundspeed", globalPropertyf("sim/flightmodel/position/groundspeed"))

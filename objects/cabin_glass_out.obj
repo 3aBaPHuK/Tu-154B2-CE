@@ -2,7 +2,7 @@ I
 800
 OBJ
 
-TEXTURE Cockpit_glass_out.png
+TEXTURE glass_out.png
 GLOBAL_specular 1.0
 BLEND_GLASS
 RAIN_scale 0.1

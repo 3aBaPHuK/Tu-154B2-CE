@@ -473,7 +473,8 @@ function tcas2000_lpush_CMDhandler(phase, duration)
               tcas_pwr = 0
 			  atcfid = 0
            else
-              tcas_pwr = 1
+				simDR_sqwk = code
+				tcas_pwr = 1
            end
         end
         simDR_but_sound = 1
@@ -626,7 +627,12 @@ function tcas()
 		if mode == -1 and tcas_test_start < 1 then
 		   tcas_test_start = 8
 		end
-		
+		if code ~= simDR_sqwk then
+			sqwk_1000 = math.floor(simDR_sqwk*0.001)
+			sqwk_0100 = math.floor(simDR_sqwk*0.01)-sqwk_1000*10
+			sqwk_0010 = math.floor(simDR_sqwk*0.1)-sqwk_1000*100-sqwk_0100*10
+			sqwk_0001 = simDR_sqwk-sqwk_1000*1000-sqwk_0100*100-sqwk_0010*10
+		end
 		if tcas_test_start > 1 then
 		   tcas_test_start = tcas_test_start -simDR_dt
 		   if tcas_test_start < 2 then
@@ -644,7 +650,9 @@ function tcas()
 			simDR_fid=string.format(char_arr[flt_nmb_1]..char_arr[flt_nmb_2]..char_arr[flt_nmb_3]..char_arr[flt_nmb_4]..char_arr[flt_nmb_5]..char_arr[flt_nmb_6]..char_arr[flt_nmb_7])
 			if simDR_tcas_disp_mod > -1 then
 				code = sqwk_1000*1000+sqwk_0100*100+sqwk_0010*10+sqwk_0001
-				simDR_sqwk = code
+				if code ~= simDR_sqwk then
+					simDR_sqwk = code
+				end
 			end
 				
 			if xpdr_fail>0 or select12>0 then
@@ -777,7 +785,9 @@ function tcas()
 							sqwk_0010 = math.floor(sqwk_vfr*0.1)-sqwk_1000*100-sqwk_0100*10
 							sqwk_0001 = sqwk_vfr-sqwk_1000*1000-sqwk_0100*100-sqwk_0010*10
 							code = sqwk_vfr
-							simDR_sqwk = code
+							if code ~= simDR_sqwk then
+								simDR_sqwk = code
+							end
 							mode=mode_prev
 						end
 					  --screen_test=0

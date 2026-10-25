@@ -1063,10 +1063,11 @@ function update()
 	switchers()
 	caps()
 	lamps()
-	if get(ismaster) ~= 1 then
-		--lamps()
-		gauges()
-	end
+	gauges()
+	-- if get(ismaster) ~= 1 then
+		-- --lamps()
+
+	-- end
 
 	
 	

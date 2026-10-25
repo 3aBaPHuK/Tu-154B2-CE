@@ -166,6 +166,7 @@ sys_data_tbl.eng_feed_p_4 = 0
 sys_data_tbl.eng_feed_res = 0
 
 sys_data_tbl.fuel_level_on = 0
+sys_data_tbl.auto_fuel_on = 0
 
 function update()
 	local passed = get(frame_time)
@@ -222,6 +223,7 @@ function update()
 	
 	-- calculate automatic cue mode
 	local auto_fuel_power = power_27R and power115R>0 and get(fuel_flow_on) == 1 and get(fuel_auto_fail) == 0
+	sys_data_tbl.auto_fuel_on = bool2int(auto_fuel_power)
 	local tanks_turn = 0 -- 0 = none, 1 = 2, 2 = 2+3, 3 = 3, 4 = 4
 	if auto_fuel_power then
 		if tank_qty_2L + tank_qty_2R > 7400 then tanks_turn = 1

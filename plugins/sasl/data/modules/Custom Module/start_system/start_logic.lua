@@ -318,7 +318,7 @@ function update()
 	local power27R = get(bus27_volt_right) > 13
 	
 	local start_mode = get(starter_mode)
-	local power_sys = get(starter_switch) == 1 and power27L and power27R
+	local power_sys = get(starter_switch) == 1 and power27R
 	local start_button = start_pressed > 0.3
 	local eng_select = get(starter_eng_select)
 	
@@ -342,7 +342,7 @@ function update()
 		local doors=get(door_cargo)==0 or eng_select~=3 --block eng3 start with rear cargo door open
 		
 		
-		if not eng1_starting and not eng2_starting and not eng3_starting and start_button and doors and starter_press > 1.5 and get(fuel_flow_mode)>0 and fuel_system then
+		if not eng1_starting and not eng2_starting and not eng3_starting and start_button and doors and starter_press > 1.5 and sys_data_tbl.auto_fuel_on > 0 and fuel_system then
 			if eng_select == 1 and power27L and rpm1 < RPM_APD_OFF then
 				failstart_1=math.random(0,0.999)
 				if failstart_1>1+math.max(-20,out_temp)/20 then
@@ -459,9 +459,10 @@ function update()
 	end
 		
 	if eng1_starting_air then 
-		if time_now - eng1_start_time < START_SEQ_TIME and rpm1 < RPM_APD_OFF + 20 then
+		if time_now - eng1_start_time < START_SEQ_TIME - 20 then
 			set(sim_ignition1, 1) 
-			set(sim_igniter1, 1)			
+			set(sim_igniter1, 1)	
+			set(heater_cur,50)			
 			--commandBegin(starter_1)
 			set(fuel_in_1, stop_1)
 		else
@@ -523,9 +524,10 @@ function update()
 	end
 		
 	if eng2_starting_air then 
-		if time_now - eng2_start_time < START_SEQ_TIME and rpm2 < RPM_APD_OFF + 20 then
+		if time_now - eng2_start_time < START_SEQ_TIME -20 then
 			set(sim_ignition2, 1) 
-			set(sim_igniter2, 1)			
+			set(sim_igniter2, 1)	
+			set(heater_cur,50)			
 			--commandBegin(starter_2)
 			set(fuel_in_2, stop_2)
 		else
@@ -585,9 +587,10 @@ function update()
 	end
 		
 	if eng3_starting_air then 
-		if time_now - eng3_start_time < START_SEQ_TIME and rpm3 < RPM_APD_OFF + 20 then
+		if time_now - eng3_start_time < START_SEQ_TIME - 20 then
 			set(sim_ignition3, 1) 
-			set(sim_igniter3, 1)			
+			set(sim_igniter3, 1)	
+			set(heater_cur,50)			
 			--commandBegin(starter_3)
 			set(fuel_in_3, stop_3)
 		else
@@ -631,7 +634,8 @@ function update()
 	set(apd_working_1, bool2int(eng1_starting))
 	set(apd_working_2, bool2int(eng2_starting))
 	set(apd_working_3, bool2int(eng3_starting))
-	set(airstart,bool2int(eng1_starting_air or eng2_starting_air or eng3_starting_air))
+	local air_start = bool2int(eng1_starting_air or eng2_starting_air or eng3_starting_air)
+	set(airstart,air_start)
 	local q=dens*math.pow(get(true_airspeed),2)/2
 	-- Custom Starter Model (X-Plane's starter model is not good enough!)
 	local c_burn=0.3*dens/1.227
@@ -655,7 +659,7 @@ function update()
 		failstart_3=get(fail_3)
 	end
 	if eng1_starting or (burn_1>0 and rpm1<=54.2 and sys_data_tbl.eng_fire_timer_1 < 20) then
-		set(heater_cur,50*heat*bool2int(eng1_starting)*get(sim_ignition1))
+		set(heater_cur,50*math.max(heat,air_start)*bool2int(eng1_starting or eng1_starting_air)*get(sim_ignition1))
 		set(fuel_1,interpolate(fuel_table,rpm1)-eng1_rt)
 		-- fuel is flooding the engine during a failed start
 		if failstart_1==1 and burn_1>0 then
@@ -673,7 +677,7 @@ function update()
 			failstart_1=0
 		end
 	elseif eng2_starting or (burn_2>0 and rpm2<=54.2 and sys_data_tbl.eng_fire_timer_2 < 20) then
-		set(heater_cur,50*heat*bool2int(eng2_starting)*get(sim_ignition2))
+		set(heater_cur,50*math.max(heat,air_start)*bool2int(eng2_starting or eng2_starting_air)*get(sim_ignition2))
 		set(fuel_2,interpolate(fuel_table,rpm2)-eng2_rt)
 		if failstart_2==1 and burn_2>0 then
 			overtemp_2=overtemp_2+passed
@@ -694,7 +698,7 @@ function update()
 			failstart_2=0
 		end
 	elseif eng3_starting or (burn_3>0 and rpm3<=54.2 and sys_data_tbl.eng_fire_timer_3 < 20) then
-		set(heater_cur,50*heat*bool2int(eng3_starting)*get(sim_ignition3))
+		set(heater_cur,50*math.max(heat,air_start)*bool2int(eng3_starting or eng3_starting_air)*get(sim_ignition3))
 		set(fuel_3,interpolate(fuel_table,rpm3)-eng3_rt)
 		if failstart_3==1 and burn_3>0 then
 			overtemp_3=overtemp_3+passed
@@ -715,7 +719,9 @@ function update()
 			failstart_3=0
 		end
 	else
-		set(heater_cur,0)
+		if air_start == 0 then
+			set(heater_cur,0)
+		end
 		set(fuel_1,1-eng1_rt)
 		set(fuel_2,1-eng2_rt)
 		set(fuel_3,1-eng3_rt)

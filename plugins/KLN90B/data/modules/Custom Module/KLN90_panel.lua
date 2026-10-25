@@ -98,7 +98,7 @@ defineProperty("sc_cage", globalPropertyi("tu154b2/custom/KLN90/cage"))
 defineProperty("pilot_Z", globalPropertyf("sim/aircraft/view/acf_peZ"))
 defineProperty("pilot_X", globalPropertyf("sim/aircraft/view/acf_peX"))
 defineProperty("pilot_head", globalPropertyi("sim/graphics/view/pilots_head_psi"))
-defineProperty("ismaster", globalPropertyf("scp/api/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
+defineProperty("ismaster", globalPropertyf("tu154b2/crew/ismaster")) -- Master. 0 = plugin not found, 1 = slave 2 = master
 
 local KLN90_SC = dofile(sasl.getAircraftPath() .. "/plugins/KLN90B/data/modules/Custom Module/KLN90_sc.lua")
 local KLN90_RENDER = dofile(sasl.getAircraftPath() .. "/plugins/KLN90B/data/modules/Custom Module/KLN90_render.lua")

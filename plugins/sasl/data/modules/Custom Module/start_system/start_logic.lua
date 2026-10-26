@@ -131,6 +131,9 @@ fail_3 = globalPropertyf("tu154b2/custom/engine/startfail_3")
 heater_cur = globalPropertyf("tu154b2/custom/engines/heater_current")
 flt_idle = globalPropertyf("tu154b2/custom/engines/flight_idle")
 airstart = globalPropertyi("tu154b2/custom/engines/airstart")
+starter_disc_fail_1 = globalPropertyi("tu154b2/custom/failures/starter_disconncet_fail_1")
+starter_disc_fail_2 = globalPropertyi("tu154b2/custom/failures/starter_disconncet_fail_2")
+starter_disc_fail_3 = globalPropertyi("tu154b2/custom/failures/starter_disconncet_fail_3")
 -- db1 = globalPropertyf("tu154b2/custom/controlls/debug1")
 -- db2 = globalPropertyf("tu154b2/custom/controlls/debug2")
 -- db3 = globalPropertyf("tu154b2/custom/controlls/debug2")
@@ -737,17 +740,17 @@ function update()
 	set(heater_cur,heater_cur_1 + heater_cur_2 + heater_cur_3)
 			
 	-- starter overspeed and desintigration timer
-	if (sys_data_tbl.starter_fail_1 > 0 and ((starter_press>0.5 and eng_select == 1) or get(eng_airvalve_1) == 1)) or eng1_starting then
+	if (get(starter_disc_fail_1) > 0 and ((starter_press>0.5 and eng_select == 1) or get(eng_airvalve_1) == 1)) or eng1_starting then
 		starter_rpm_1 = starter_rpm_1 + (rpm1 - starter_rpm_1) * passed
 	elseif starter_rpm_1 > 0.1 then
 		starter_rpm_1 = starter_rpm_1 - starter_rpm_1 * passed * 0.05
 	end
-	if (sys_data_tbl.starter_fail_2 > 0 and ((starter_press>0.5 and eng_select == 2) or get(eng_airvalve_2) == 1)) or eng2_starting then
+	if (get(starter_disc_fail_2) > 0 and ((starter_press>0.5 and eng_select == 2) or get(eng_airvalve_2) == 1)) or eng2_starting then
 		starter_rpm_2 = starter_rpm_2 + (rpm2 - starter_rpm_2) * passed
 	elseif starter_rpm_2 > 0.1 then
 		starter_rpm_2 = starter_rpm_2 - starter_rpm_2 * passed * 0.05
 	end
-	if (sys_data_tbl.starter_fail_3 > 0 and ((starter_press>0.5 and eng_select == 3) or get(eng_airvalve_3) == 1)) or eng3_starting then
+	if (get(starter_disc_fail_3) > 0 and ((starter_press>0.5 and eng_select == 3) or get(eng_airvalve_3) == 1)) or eng3_starting then
 		starter_rpm_3 = starter_rpm_3 + (rpm3 - starter_rpm_3) * passed 
 	elseif starter_rpm_3 > 0.1 then
 		starter_rpm_3 = starter_rpm_3 - starter_rpm_3 * passed * 0.05
@@ -762,7 +765,13 @@ function update()
 	if starter_rpm_3 > 45 then
 		sys_data_tbl.starter_ovspd_timer_3 = sys_data_tbl.starter_ovspd_timer_3 + passed * math.pow(rpm3,3) / 800000
 	end
-
+	sys_data_tbl.starter_rpm_1 = starter_rpm_1
+	sys_data_tbl.starter_rpm_2 = starter_rpm_2
+	sys_data_tbl.starter_rpm_3 = starter_rpm_3
+	
+	sys_data_tbl.eng_airstart_1 = bool2int(eng1_starting_air)
+	sys_data_tbl.eng_airstart_2 = bool2int(eng2_starting_air)
+	sys_data_tbl.eng_airstart_3 = bool2int(eng3_starting_air)
 	
 	if get(ismaster) ~= 1 then 	
 		-- excess fuel is purged from the engine
@@ -784,13 +793,6 @@ function update()
 		set(fail_1,failstart_1)
 		set(fail_2,failstart_2)
 		set(fail_3,failstart_3)		
-		sys_data_tbl.starter_rpm_1 = starter_rpm_1
-		sys_data_tbl.starter_rpm_2 = starter_rpm_2
-		sys_data_tbl.starter_rpm_3 = starter_rpm_3
-		
-		sys_data_tbl.eng_airstart_1 = bool2int(eng1_starting_air)
-		sys_data_tbl.eng_airstart_2 = bool2int(eng2_starting_air)
-		sys_data_tbl.eng_airstart_3 = bool2int(eng3_starting_air)
 		
 	end
 

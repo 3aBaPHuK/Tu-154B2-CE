@@ -764,19 +764,19 @@ function update()
 	
 	
 	
-	payload_panel:setIsVisible(get(show_load_panel) == 1 or get(ismaster) > 0)
+	payload_panel:setIsVisible(get(show_load_panel) == 1)
 	absu_2d_panel:setIsVisible(get(show_absu_panel) == 1)
 	-- absu_2d_panel.visible = false
 	-- ovhd_2d_panel.visible = false
 	nvu_2D_panel:setIsVisible(get(show_nvu_panel) == 1)
 	checklist_panel:setIsVisible(get(show_checklist_panel) == 1)
-	ground_srv_panel:setIsVisible(get(show_ground_panel) == 1 or get(ismaster) > 0)
+	ground_srv_panel:setIsVisible(get(show_ground_panel) == 1)
 	--uphone.visible = get(show_phone) == 1
 	-- camera_panel.visible = false
 	-- palette.visible = false
 	fails_panel:setIsVisible(get(show_fail_panel) == 1)
-	load_button:setIsVisible(get(cockpit_80s)==0)
-	gnd_button:setIsVisible(get(cockpit_80s)==0)
+	load_button:setIsVisible(get(cockpit_80s)==0 or get(ismaster) > 0)
+	gnd_button:setIsVisible(get(cockpit_80s)==0 or get(ismaster) > 0)
 	thro_button:setIsVisible(get(ismaster) > 0)
 	
 	
